@@ -1,0 +1,1002 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Simulado 5 - Clínica Odontológica V</title>
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <style>
+            .nav-header {
+                background: #f8f9fa;
+                padding: 15px 20px;
+                border-bottom: 1px solid #dee2e6;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+            .nav-header a {
+                color: #495057;
+                text-decoration: none;
+                font-weight: normal;
+                font-size: 1em;
+            }
+            .nav-header a:hover {
+                color: #212529;
+                text-decoration: underline;
+            }
+            .questao {
+                margin-bottom: 40px;
+                padding-bottom: 30px;
+                border-bottom: 1px solid #e9ecef;
+            }
+            .questao:last-child {
+                border-bottom: none;
+            }
+            .questao h3 {
+                margin-bottom: 15px;
+            }
+            .sub-item {
+                margin: 15px 0;
+            }
+            .sub-item label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 500;
+            }
+            .sub-item textarea {
+                width: 100%;
+                min-height: 80px;
+                padding: 10px;
+                border: 1px solid #ced4da;
+                border-radius: 4px;
+                font-family: inherit;
+                font-size: 0.95em;
+                resize: vertical;
+                box-sizing: border-box;
+            }
+            .sub-item textarea:focus {
+                outline: none;
+                border-color: #495057;
+            }
+            .gabarito {
+                display: none;
+                background: #f8f9fa;
+                padding: 15px;
+                margin-top: 15px;
+                border-left: 3px solid #495057;
+            }
+            .gabarito.visible {
+                display: block;
+            }
+            .gabarito h4 {
+                margin-top: 0;
+                font-size: 1em;
+                color: #495057;
+            }
+            .gabarito ul {
+                margin: 5px 0;
+                padding-left: 20px;
+            }
+            .gabarito li {
+                margin: 3px 0;
+            }
+            .btn {
+                background: #495057;
+                color: #fff;
+                border: none;
+                padding: 8px 16px;
+                cursor: pointer;
+                font-size: 0.9em;
+                margin-top: 10px;
+            }
+            .btn:hover {
+                background: #343a40;
+            }
+            .btn-outline {
+                background: transparent;
+                color: #495057;
+                border: 1px solid #495057;
+            }
+            .btn-outline:hover {
+                background: #495057;
+                color: #fff;
+            }
+            .progress-bar {
+                background: #e9ecef;
+                height: 8px;
+                margin: 20px 0;
+            }
+            .progress-bar-fill {
+                background: #495057;
+                height: 100%;
+                transition: width 0.3s;
+            }
+            .status {
+                font-size: 0.9em;
+                color: #6c757d;
+                margin-bottom: 20px;
+            }
+            .actions {
+                margin: 20px 0;
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+        </style>
+    </head>
+    <body class="stackedit">
+        <div class="nav-header">
+            <a href="index.html">← Voltar para Pagina Inicial</a>
+        </div>
+        <div class="stackedit__right" style="margin-left: 0;">
+            <div class="stackedit__html">
+                <h1>Simulado 5</h1>
+                <p><strong>Clinica Odontologica V - UFRGS</strong></p>
+                <p>15 Questoes Dissertativas | Pontuacao Total: 125 pontos</p>
+                
+                <div class="status">
+                    <span id="answered-count">0</span> de 15 questoes respondidas
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                
+                <div class="actions">
+                    <button class="btn" onclick="saveAnswers()">Salvar Respostas</button>
+                    <button class="btn btn-outline" onclick="toggleAllGabaritos()">Mostrar/Ocultar Todos os Gabaritos</button>
+                    <button class="btn btn-outline" onclick="clearAnswers()">Limpar Respostas</button>
+                </div>
+                
+                <hr>
+
+                <div class="questao" data-questao="1">
+                    <h3>Questao 1 (10 pontos)</h3>
+                    <p>Explique tecnologias modernas em Endodontia:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Instrumentos rotatorios niquel-titanio</label>
+                        <textarea id="q1a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Localizadores apicais</label>
+                        <textarea id="q1b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) TCFC: aplicacoes</label>
+                        <textarea id="q1c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Microscopios operatorios</label>
+                        <textarea id="q1d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(1)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-1">
+                        <h4>a) Instrumentos NiTi (2,5 pontos)</h4>
+                        <ul>
+                            <li>Superelasticidade: acompanham curvatura</li>
+                            <li>Memoria de forma</li>
+                            <li>Preparo mais centralizado</li>
+                            <li>Menor transporte apical</li>
+                        </ul>
+                        <h4>b) Localizadores apicais (2,5 pontos)</h4>
+                        <ul>
+                            <li>Determinacao eletronica do comprimento</li>
+                            <li>Precisao maior que 90%</li>
+                            <li>Reduz necessidade de radiografias</li>
+                        </ul>
+                        <h4>c) TCFC (2,5 pontos)</h4>
+                        <ul>
+                            <li>Tomografia computadorizada feixe conico</li>
+                            <li>Visualizacao 3D de anatomia</li>
+                            <li>Deteccao de lesoes, fraturas, reabsorcoes</li>
+                        </ul>
+                        <h4>d) Microscopios operatorios (2,5 pontos)</h4>
+                        <ul>
+                            <li>Magnificacao e iluminacao</li>
+                            <li>Localizacao de canais</li>
+                            <li>Remocao de instrumentos fraturados</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="2">
+                    <h3>Questao 2 (8 pontos)</h3>
+                    <p>Analise intercorrencias em retratamento:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Fratura instrumento: protocolo</label>
+                        <textarea id="q2a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Desvio apos tentativa ultrapassar</label>
+                        <textarea id="q2b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Decisao: aguardar vs circular</label>
+                        <textarea id="q2c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Documentacao e prognostico</label>
+                        <textarea id="q2d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(2)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-2">
+                        <h4>a) Fratura instrumento (2 pontos)</h4>
+                        <ul>
+                            <li>Tentativa de bypass com limas finas</li>
+                            <li>Ultrassom para remocao</li>
+                            <li>Se impossivel: obturar ate fragmento</li>
+                        </ul>
+                        <h4>b) Desvio (2 pontos)</h4>
+                        <ul>
+                            <li>Tentar retomar trajeto original</li>
+                            <li>Uso de limas pre-curvadas</li>
+                            <li>Irrigacao abundante</li>
+                        </ul>
+                        <h4>c) Decisao aguardar vs circular (2 pontos)</h4>
+                        <ul>
+                            <li>Avaliar sintomatologia</li>
+                            <li>Presenca de lesao periapical</li>
+                            <li>Estado do tratamento original</li>
+                        </ul>
+                        <h4>d) Documentacao (2 pontos)</h4>
+                        <ul>
+                            <li>Registro radiografico</li>
+                            <li>Comunicacao com paciente</li>
+                            <li>Prognostico reservado se complicacao</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="3">
+                    <h3>Questao 3 (10 pontos)</h3>
+                    <p>Discuta PPR baseado em Tada:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) 1.094 dentes: o que aprendemos</label>
+                        <textarea id="q3a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) 15% perdidos: causas detalhadas</label>
+                        <textarea id="q3b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Direct vs indirect abutments</label>
+                        <textarea id="q3c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Curva Kaplan-Meier: interpretacao</label>
+                        <textarea id="q3d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(3)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-3">
+                        <h4>a) 1.094 dentes (2,5 pontos)</h4>
+                        <ul>
+                            <li>Estudo longitudinal Tada et al. (2015)</li>
+                            <li>Dentes pilares de PPR</li>
+                            <li>Acompanhamento prolongado</li>
+                        </ul>
+                        <h4>b) 15% perdidos - causas (2,5 pontos)</h4>
+                        <ul>
+                            <li>42% doenca periodontal</li>
+                            <li>30% carie</li>
+                            <li>26% fratura</li>
+                            <li>Importancia da manutencao</li>
+                        </ul>
+                        <h4>c) Direct vs indirect abutments (2,5 pontos)</h4>
+                        <ul>
+                            <li>Diretos: em contato com grampo</li>
+                            <li>Indiretos: adjacentes aos diretos</li>
+                            <li>Diretos: maior sobrecarga</li>
+                        </ul>
+                        <h4>d) Kaplan-Meier (2,5 pontos)</h4>
+                        <ul>
+                            <li>Curva de sobrevivencia</li>
+                            <li>Comparacao entre grupos de manutencao</li>
+                            <li>Manutencao regular: melhor sobrevida</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="4">
+                    <h3>Questao 4 (7 pontos)</h3>
+                    <p>Explique IPV e ISG:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Tecnica de avaliacao</label>
+                        <textarea id="q4a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Calculo da porcentagem</label>
+                        <textarea id="q4b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Interpretacao clinica</label>
+                        <textarea id="q4c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Evolucao em caso tratado</label>
+                        <textarea id="q4d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(4)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-4">
+                        <h4>a) Tecnica avaliacao (2 pontos)</h4>
+                        <ul>
+                            <li>IPV: visualizacao direta de placa</li>
+                            <li>ISG: sondagem leve (25g)</li>
+                            <li>4-6 faces por dente</li>
+                        </ul>
+                        <h4>b) Calculo porcentagem (2 pontos)</h4>
+                        <ul>
+                            <li>IPV = (faces com placa / total) x 100</li>
+                            <li>ISG = (faces sangrantes / total) x 100</li>
+                        </ul>
+                        <h4>c) Interpretacao clinica (1,5 pontos)</h4>
+                        <ul>
+                            <li>IPV alto: deficiencia de higiene</li>
+                            <li>ISG alto: inflamacao ativa</li>
+                            <li>Ambos orientam tratamento</li>
+                        </ul>
+                        <h4>d) Evolucao caso tratado (1,5 pontos)</h4>
+                        <ul>
+                            <li>Caso S.R.A.: IPV 40% para 37,5%, ISG 28% para 3,12%</li>
+                            <li>Caso A.J.C.A.: IPV 100% para 55%, ISG 100% para 57%</li>
+                            <li>Caso S.P.: IPV 24% para 4%, ISG 21% para 8%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="5">
+                    <h3>Questao 5 (8 pontos)</h3>
+                    <p>Descreva instrumentacao periodontal:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Gracey 11-12: uso e superficies</label>
+                        <textarea id="q5a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Gracey 13-14: uso e superficies</label>
+                        <textarea id="q5b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Molt: funcao</label>
+                        <textarea id="q5c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Cinzel: quando usar</label>
+                        <textarea id="q5d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(5)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-5">
+                        <h4>a) Gracey 11-12 (2 pontos)</h4>
+                        <ul>
+                            <li>Faces mesiais</li>
+                            <li>Angulacao especifica</li>
+                            <li>Dentes posteriores</li>
+                        </ul>
+                        <h4>b) Gracey 13-14 (2 pontos)</h4>
+                        <ul>
+                            <li>Faces distais</li>
+                            <li>Dentes posteriores</li>
+                            <li>Movimento de tracao</li>
+                        </ul>
+                        <h4>c) Molt (2 pontos)</h4>
+                        <ul>
+                            <li>Descolador de periosteo</li>
+                            <li>Usado em ACC</li>
+                            <li>Afastamento de tecido mole</li>
+                        </ul>
+                        <h4>d) Cinzel (2 pontos)</h4>
+                        <ul>
+                            <li>Osteotomia em ACC</li>
+                            <li>Remocao de osso crestal</li>
+                            <li>Cinzel de Ochsenbein</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="6">
+                    <h3>Questao 6 (10 pontos)</h3>
+                    <p>Analise erosao por refluxo/gastrite:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Fisiopatologia</label>
+                        <textarea id="q6a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Padrao de desgaste</label>
+                        <textarea id="q6b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Dentifrico especifico</label>
+                        <textarea id="q6c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Integracao com medico</label>
+                        <textarea id="q6d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(6)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-6">
+                        <h4>a) Fisiopatologia (2,5 pontos)</h4>
+                        <ul>
+                            <li>Acido gastrico (HCl, pH menor que 2) atinge cavidade oral</li>
+                            <li>Refluxo gastroesofagico</li>
+                            <li>Desmineralizacao quimica do esmalte</li>
+                        </ul>
+                        <h4>b) Padrao desgaste (2,5 pontos)</h4>
+                        <ul>
+                            <li>Faces palatinas superiores (perimolise)</li>
+                            <li>Faces oclusais de posteriores</li>
+                            <li>Bordas incisais afinadas</li>
+                            <li>Aspecto "seda"</li>
+                        </ul>
+                        <h4>c) Dentifrico especifico (2,5 pontos)</h4>
+                        <ul>
+                            <li>Baixa abrasividade</li>
+                            <li>Alto conteudo de fluor</li>
+                            <li>Evitar escovacao imediata pos-episodio</li>
+                        </ul>
+                        <h4>d) Integracao medico (2,5 pontos)</h4>
+                        <ul>
+                            <li>Encaminhamento gastroenterologista</li>
+                            <li>Controle medicamentoso do refluxo</li>
+                            <li>Abordagem multidisciplinar</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="7">
+                    <h3>Questao 7 (6 pontos)</h3>
+                    <p>Discuta scoping review:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Objetivos vs revisao sistematica</label>
+                        <textarea id="q7a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Diretrizes PRISMA-Scr</label>
+                        <textarea id="q7b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) OSF: importancia</label>
+                        <textarea id="q7c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Quando usar</label>
+                        <textarea id="q7d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(7)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-7">
+                        <h4>a) Objetivos vs RS (1,5 pontos)</h4>
+                        <ul>
+                            <li>Scoping: mapeamento amplo da literatura</li>
+                            <li>RS: pergunta especifica, analise estatistica</li>
+                            <li>Scoping: exploratorio</li>
+                        </ul>
+                        <h4>b) PRISMA-ScR (1,5 pontos)</h4>
+                        <ul>
+                            <li>Diretrizes para scoping reviews</li>
+                            <li>Checklist de itens</li>
+                            <li>Transparencia no relato</li>
+                        </ul>
+                        <h4>c) OSF (1,5 pontos)</h4>
+                        <ul>
+                            <li>Open Science Framework</li>
+                            <li>Registro previo do protocolo</li>
+                            <li>Aumenta credibilidade</li>
+                        </ul>
+                        <h4>d) Quando usar (1,5 pontos)</h4>
+                        <ul>
+                            <li>Temas amplos/emergentes</li>
+                            <li>Mapeamento de evidencias</li>
+                            <li>Identificacao de lacunas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="8">
+                    <h3>Questao 8 (10 pontos)</h3>
+                    <p>Explique provisorios em protese:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Importancia estetica e funcional</label>
+                        <textarea id="q8a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Tecnicas de confeccao</label>
+                        <textarea id="q8b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Cimentacao provisoria: materiais</label>
+                        <textarea id="q8c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Tempo de uso e manutencao</label>
+                        <textarea id="q8d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(8)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-8">
+                        <h4>a) Importancia (2,5 pontos)</h4>
+                        <ul>
+                            <li>Protecao do preparo</li>
+                            <li>Manutencao de estetica e funcao</li>
+                            <li>Estabilizacao de posicao</li>
+                        </ul>
+                        <h4>b) Tecnicas confeccao (2,5 pontos)</h4>
+                        <ul>
+                            <li>Direta: matriz + resina acrilica</li>
+                            <li>Indireta: sobre modelo</li>
+                            <li>Casca de silicona + bis-acrilico</li>
+                        </ul>
+                        <h4>c) Cimentacao provisoria (2,5 pontos)</h4>
+                        <ul>
+                            <li>Temp Bond</li>
+                            <li>Hidroxido de calcio</li>
+                            <li>Facil remocao</li>
+                        </ul>
+                        <h4>d) Tempo e manutencao (2,5 pontos)</h4>
+                        <ul>
+                            <li>Idealmente: 1-3 semanas</li>
+                            <li>Pode estender se necessario</li>
+                            <li>Verificar margens e contatos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="9">
+                    <h3>Questao 9 (8 pontos)</h3>
+                    <p>Analise selamento dentinario imediato:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Conceito e importancia</label>
+                        <textarea id="q9a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Momento de aplicacao</label>
+                        <textarea id="q9b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Materiais utilizados</label>
+                        <textarea id="q9c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Beneficios comprovados</label>
+                        <textarea id="q9d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(9)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-9">
+                        <h4>a) Conceito (2 pontos)</h4>
+                        <ul>
+                            <li>Aplicacao de adesivo sobre dentina exposta</li>
+                            <li>Imediatamente apos preparo</li>
+                            <li>Antes da moldagem</li>
+                        </ul>
+                        <h4>b) Momento aplicacao (2 pontos)</h4>
+                        <ul>
+                            <li>Apos preparo cavitario</li>
+                            <li>Antes do provisorio</li>
+                            <li>Protege tubulos dentinarios</li>
+                        </ul>
+                        <h4>c) Materiais (2 pontos)</h4>
+                        <ul>
+                            <li>Sistemas adesivos convencionais</li>
+                            <li>Acido fosforico + primer + adesivo</li>
+                            <li>Ou autocondicionantes</li>
+                        </ul>
+                        <h4>d) Beneficios (2 pontos)</h4>
+                        <ul>
+                            <li>Reduz sensibilidade pos-operatoria</li>
+                            <li>Melhora adesao final</li>
+                            <li>Protecao da polpa</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="10">
+                    <h3>Questao 10 (7 pontos)</h3>
+                    <p>Discuta reabilitacao em erosao:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Avaliacao inicial</label>
+                        <textarea id="q10a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Clareamento: cuidados</label>
+                        <textarea id="q10b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Facetas vs restauracoes diretas</label>
+                        <textarea id="q10c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Manutencao longo prazo</label>
+                        <textarea id="q10d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(10)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-10">
+                        <h4>a) Avaliacao inicial (2 pontos)</h4>
+                        <ul>
+                            <li>Extensao das lesoes</li>
+                            <li>Causa: refluxo, dieta, bruxismo</li>
+                            <li>Controle da etiologia primeiro</li>
+                        </ul>
+                        <h4>b) Clareamento cuidados (2 pontos)</h4>
+                        <ul>
+                            <li>Concentracao reduzida</li>
+                            <li>Monitorar sensibilidade</li>
+                            <li>Caso I.S.A.: clareamento consultorio com Whiteness HP</li>
+                        </ul>
+                        <h4>c) Facetas vs diretas (2 pontos)</h4>
+                        <ul>
+                            <li>Facetas: extensao maior, melhor estetica</li>
+                            <li>Diretas: lesoes localizadas, menor custo</li>
+                            <li>Depende de estrutura remanescente</li>
+                        </ul>
+                        <h4>d) Manutencao (1 ponto)</h4>
+                        <ul>
+                            <li>Controle de fatores etiologicos</li>
+                            <li>Fluorterapia</li>
+                            <li>Acompanhamento regular</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="11">
+                    <h3>Questao 11 (10 pontos)</h3>
+                    <p>Explique cimentacao de restauracoes:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Cimentos resinosos: tipos</label>
+                        <textarea id="q11a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) RelyX U200: caracteristicas</label>
+                        <textarea id="q11b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Fosfato de zinco: quando usar</label>
+                        <textarea id="q11c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Protocolo de remocao excessos</label>
+                        <textarea id="q11d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(11)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-11">
+                        <h4>a) Cimentos resinosos tipos (2,5 pontos)</h4>
+                        <ul>
+                            <li>Autoadesivos: RelyX U200</li>
+                            <li>Convencionais: requerem adesivo</li>
+                            <li>Dual: foto + quimico</li>
+                        </ul>
+                        <h4>b) RelyX U200 (2,5 pontos)</h4>
+                        <ul>
+                            <li>Autoadesivo</li>
+                            <li>Nao requer condicionamento previo</li>
+                            <li>Caso S.P.: usado para onlay</li>
+                        </ul>
+                        <h4>c) Fosfato de zinco (2,5 pontos)</h4>
+                        <ul>
+                            <li>Cimentacao convencional</li>
+                            <li>Coroas metaloceramicas</li>
+                            <li>Retentores intrarradiculares metalicos</li>
+                        </ul>
+                        <h4>d) Remocao excessos (2,5 pontos)</h4>
+                        <ul>
+                            <li>Imediata em autopolimerizaveis</li>
+                            <li>Apos gel em fotopolimerizaveis</li>
+                            <li>Fio dental, sonda exploradora</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="12">
+                    <h3>Questao 12 (8 pontos)</h3>
+                    <p>Analise planejamento integrado:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Sequencia de tratamentos</label>
+                        <textarea id="q12a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Prioridades clinicas</label>
+                        <textarea id="q12b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Adequacao do meio bucal</label>
+                        <textarea id="q12c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Proservacao e manutencao</label>
+                        <textarea id="q12d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(12)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-12">
+                        <h4>a) Sequencia tratamentos (2 pontos)</h4>
+                        <ul>
+                            <li>1o: Urgencias e adequacao do meio</li>
+                            <li>2o: Tratamento periodontal</li>
+                            <li>3o: Procedimentos restauradores</li>
+                            <li>4o: Reabilitacao protetica</li>
+                        </ul>
+                        <h4>b) Prioridades clinicas (2 pontos)</h4>
+                        <ul>
+                            <li>Dor e infeccao</li>
+                            <li>Controle de biofilme</li>
+                            <li>Estabilizacao da doenca</li>
+                        </ul>
+                        <h4>c) Adequacao meio bucal (2 pontos)</h4>
+                        <ul>
+                            <li>Remocao de focos de infeccao</li>
+                            <li>Raspagem supragengival</li>
+                            <li>Orientacao de higiene</li>
+                            <li>Caso A.J.C.A.: IHB + RAP + RASUB</li>
+                        </ul>
+                        <h4>d) Proservacao (2 pontos)</h4>
+                        <ul>
+                            <li>Manutencao periodontal 3-6 meses</li>
+                            <li>Verificacao de restauracoes</li>
+                            <li>Reforco de higiene</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="13">
+                    <h3>Questao 13 (6 pontos)</h3>
+                    <p>Discuta termo de consentimento:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Importancia legal</label>
+                        <textarea id="q13a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Informacoes essenciais</label>
+                        <textarea id="q13b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Linguagem adequada</label>
+                        <textarea id="q13c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Documentacao</label>
+                        <textarea id="q13d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(13)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-13">
+                        <h4>a) Importancia legal (1,5 pontos)</h4>
+                        <ul>
+                            <li>Documentacao do acordo</li>
+                            <li>Protecao profissional e paciente</li>
+                            <li>Registro de informacoes fornecidas</li>
+                        </ul>
+                        <h4>b) Informacoes essenciais (1,5 pontos)</h4>
+                        <ul>
+                            <li>Diagnostico</li>
+                            <li>Tratamento proposto e alternativas</li>
+                            <li>Riscos e beneficios</li>
+                            <li>Custos e tempo</li>
+                        </ul>
+                        <h4>c) Linguagem adequada (1,5 pontos)</h4>
+                        <ul>
+                            <li>Clara e acessivel</li>
+                            <li>Evitar jargao tecnico excessivo</li>
+                            <li>Certificar compreensao</li>
+                        </ul>
+                        <h4>d) Documentacao (1,5 pontos)</h4>
+                        <ul>
+                            <li>Assinatura do paciente</li>
+                            <li>Data</li>
+                            <li>Copia para o paciente</li>
+                            <li>Arquivo no prontuario</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="14">
+                    <h3>Questao 14 (10 pontos)</h3>
+                    <p>Explique manutencao periodontal:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Frequencia baseada em risco</label>
+                        <textarea id="q14a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Procedimentos em cada consulta</label>
+                        <textarea id="q14b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Motivacao do paciente</label>
+                        <textarea id="q14c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Quando reintervir</label>
+                        <textarea id="q14d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(14)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-14">
+                        <h4>a) Frequencia baseada em risco (2,5 pontos)</h4>
+                        <ul>
+                            <li>Baixo risco: 6-12 meses</li>
+                            <li>Moderado: 4-6 meses</li>
+                            <li>Alto risco: 3 meses</li>
+                            <li>Ferramenta PRA: www.perio-tools.com</li>
+                        </ul>
+                        <h4>b) Procedimentos consulta (2,5 pontos)</h4>
+                        <ul>
+                            <li>IPV e ISG</li>
+                            <li>Sondagem periodontal</li>
+                            <li>RAP/RASUB conforme necessidade</li>
+                            <li>IHB e motivacao</li>
+                        </ul>
+                        <h4>c) Motivacao paciente (2,5 pontos)</h4>
+                        <ul>
+                            <li>Mostrar indices e evolucao</li>
+                            <li>Demonstracao de tecnica</li>
+                            <li>Reforco positivo</li>
+                            <li>Caso A.J.C.A.: multiplas abordagens de motivacao</li>
+                        </ul>
+                        <h4>d) Quando reintervir (2,5 pontos)</h4>
+                        <ul>
+                            <li>Aumento de IPV/ISG</li>
+                            <li>Novas bolsas</li>
+                            <li>Sangramento persistente</li>
+                            <li>Perda de insercao</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="questao" data-questao="15">
+                    <h3>Questao 15 (7 pontos)</h3>
+                    <p>Analise prognostico em Odontologia:</p>
+                    
+                    <div class="sub-item">
+                        <label>a) Fatores locais</label>
+                        <textarea id="q15a" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>b) Fatores sistemicos</label>
+                        <textarea id="q15b" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>c) Fatores comportamentais</label>
+                        <textarea id="q15c" onchange="updateProgress()"></textarea>
+                    </div>
+                    <div class="sub-item">
+                        <label>d) Comunicacao com paciente</label>
+                        <textarea id="q15d" onchange="updateProgress()"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="toggleGabarito(15)">Ver Gabarito</button>
+                    <div class="gabarito" id="gabarito-15">
+                        <h4>a) Fatores locais (2 pontos)</h4>
+                        <ul>
+                            <li>Estrutura dentaria remanescente</li>
+                            <li>Saude periodontal</li>
+                            <li>Proporcao coroa-raiz</li>
+                            <li>Qualidade do tratamento endodontico</li>
+                        </ul>
+                        <h4>b) Fatores sistemicos (2 pontos)</h4>
+                        <ul>
+                            <li>Diabetes (controle glicemico)</li>
+                            <li>Imunossupressao</li>
+                            <li>Doencas cardiovasculares</li>
+                            <li>Caso S.R.A.: HAS, dislipidemia, pre-DM</li>
+                        </ul>
+                        <h4>c) Fatores comportamentais (1,5 pontos)</h4>
+                        <ul>
+                            <li>Tabagismo</li>
+                            <li>Adesao ao tratamento</li>
+                            <li>Higiene oral</li>
+                            <li>Bruxismo</li>
+                        </ul>
+                        <h4>d) Comunicacao paciente (1,5 pontos)</h4>
+                        <ul>
+                            <li>Linguagem clara sobre prognostico</li>
+                            <li>Expectativas realistas</li>
+                            <li>Opcoes de tratamento</li>
+                            <li>Decisao compartilhada</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr>
+                <p><strong>Pontuacao Total:</strong> 125 pontos</p>
+                <p><strong>Nota Final:</strong> (Pontuacao obtida / 125) x 10</p>
+                <hr>
+                <p><strong>Faculdade de Odontologia - UFRGS</strong></p>
+                <p>Clinica Odontologica V - 2024/2025</p>
+            </div>
+        </div>
+
+        <script>
+            const STORAGE_KEY = 'simulado5_answers';
+            
+            function saveAnswers() {
+                const answers = {};
+                document.querySelectorAll('textarea').forEach(textarea => {
+                    answers[textarea.id] = textarea.value;
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
+                alert('Respostas salvas com sucesso.');
+            }
+            
+            function loadAnswers() {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    const answers = JSON.parse(saved);
+                    Object.keys(answers).forEach(id => {
+                        const textarea = document.getElementById(id);
+                        if (textarea) {
+                            textarea.value = answers[id];
+                        }
+                    });
+                }
+                updateProgress();
+            }
+            
+            function clearAnswers() {
+                if (confirm('Tem certeza que deseja limpar todas as respostas?')) {
+                    document.querySelectorAll('textarea').forEach(textarea => {
+                        textarea.value = '';
+                    });
+                    localStorage.removeItem(STORAGE_KEY);
+                    updateProgress();
+                }
+            }
+            
+            function toggleGabarito(num) {
+                const gabarito = document.getElementById('gabarito-' + num);
+                gabarito.classList.toggle('visible');
+            }
+            
+            let allGabaritosVisible = false;
+            function toggleAllGabaritos() {
+                allGabaritosVisible = !allGabaritosVisible;
+                document.querySelectorAll('.gabarito').forEach(g => {
+                    if (allGabaritosVisible) {
+                        g.classList.add('visible');
+                    } else {
+                        g.classList.remove('visible');
+                    }
+                });
+            }
+            
+            function updateProgress() {
+                const questoes = document.querySelectorAll('.questao');
+                let answered = 0;
+                
+                questoes.forEach(questao => {
+                    const textareas = questao.querySelectorAll('textarea');
+                    let hasAnswer = false;
+                    textareas.forEach(ta => {
+                        if (ta.value.trim().length > 0) {
+                            hasAnswer = true;
+                        }
+                    });
+                    if (hasAnswer) answered++;
+                });
+                
+                document.getElementById('answered-count').textContent = answered;
+                const percent = (answered / 15) * 100;
+                document.getElementById('progress-fill').style.width = percent + '%';
+            }
+            
+            document.addEventListener('DOMContentLoaded', loadAnswers);
+        </script>
+    </body>
+</html>
+
