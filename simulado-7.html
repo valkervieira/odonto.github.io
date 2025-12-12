@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulado 7 - Tratamentos Conservadores da Polpa e Medicação Intracanal</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+    <style>
+        .nav-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-header a {
+            color: #495057;
+            text-decoration: none;
+            font-weight: normal;
+            font-size: 1em;
+            transition: color 0.2s;
+        }
+        .nav-header a:hover {
+            color: #212529;
+            text-decoration: underline;
+        }
+        .questao {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .questao h3 {
+            color: #495057;
+            margin-top: 0;
+        }
+        .sub-item {
+            margin: 15px 0;
+        }
+        .sub-item label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #495057;
+        }
+        .sub-item textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-family: inherit;
+            resize: vertical;
+        }
+        .gabarito {
+            background: #e7f3ff;
+            border: 1px solid #b6d4fe;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+        .gabarito.show {
+            display: block;
+        }
+        .gabarito h4 {
+            margin-top: 0;
+            color: #0a58ca;
+        }
+        .btn-gabarito {
+            background: #495057;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-gabarito:hover {
+            background: #343a40;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-save {
+            background: #198754;
+            color: white;
+        }
+        .btn-toggle {
+            background: #0d6efd;
+            color: white;
+        }
+        .btn-clear {
+            background: #dc3545;
+            color: white;
+        }
+        .progress-bar {
+            background: #e9ecef;
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .progress-fill {
+            background: #198754;
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+        .progress-text {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body class="stackedit">
+    <div class="nav-header">
+        <a href="index.html">← Voltar para Página Inicial</a>
+    </div>
+    <div class="stackedit__right">
+        <div class="stackedit__html">
+            <h1>Simulado 7 - Tratamentos Conservadores da Polpa e Medicação Intracanal</h1>
+            <p><strong>Tema:</strong> Capeamento pulpar, Pulpotomia, Medicação intracanal, Retratamento</p>
+
+            <div class="progress-text">Progresso: <span id="progress">0</span>/<span id="total">10</span> questões respondidas</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+            </div>
+
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswers()">💾 Salvar Respostas</button>
+                <button class="btn-toggle" onclick="toggleAllGabaritos()">👁 Mostrar/Ocultar Gabaritos</button>
+                <button class="btn-clear" onclick="clearAnswers()">🗑 Limpar Respostas</button>
+            </div>
+
+            <div class="questao" id="q1">
+                <h3>Questão 1</h3>
+                <p>Quais são as modalidades de tratamentos conservadores da polpa? Divida-as entre procedimentos com e sem exposição pulpar.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp1" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab1')">Ver Gabarito</button>
+                <div class="gabarito" id="gab1">
+                    <h4>Gabarito</h4>
+                    <p><strong>SEM exposição pulpar:</strong></p>
+                    <ul>
+                        <li>Capeamento Pulpar Indireto</li>
+                        <li>Remoção Seletiva de Tecido Cariado</li>
+                    </ul>
+                    <p><strong>COM exposição pulpar:</strong></p>
+                    <ul>
+                        <li>Capeamento Pulpar Direto</li>
+                        <li>Curetagem Pulpar (Pulpotomia Parcial)</li>
+                        <li>Pulpotomia (Pulpotomia Total)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q2">
+                <h3>Questão 2</h3>
+                <p>Compare as características clínicas de um tecido pulpar favorável versus desfavorável para tratamentos conservadores.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp2" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab2')">Ver Gabarito</button>
+                <div class="gabarito" id="gab2">
+                    <h4>Gabarito</h4>
+                    <p><strong>Tecido Pulpar FAVORÁVEL:</strong></p>
+                    <ul>
+                        <li>Sangramento vermelho vivo</li>
+                        <li>Consistente ao corte</li>
+                        <li>Elástica</li>
+                        <li>Hemostasia obtida em 5-10 minutos</li>
+                    </ul>
+                    <p><strong>Tecido Pulpar DESFAVORÁVEL:</strong></p>
+                    <ul>
+                        <li>Sangramento ausente, claro ou escuro</li>
+                        <li>Sem resistência, liquefeito ou fibrosado</li>
+                        <li>Presença de calcificação ou fibrosamento</li>
+                        <li>Sangramento abundante sem controle = indica pulpectomia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q3">
+                <h3>Questão 3</h3>
+                <p>Compare o Hidróxido de Cálcio e o MTA como agentes protetores pulpares. Qual é mais indicado e por quê?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp3" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab3')">Ver Gabarito</button>
+                <div class="gabarito" id="gab3">
+                    <h4>Gabarito</h4>
+                    <p><strong>Hidróxido de Cálcio:</strong></p>
+                    <ul>
+                        <li>Libera íons hidroxila, aumenta pH</li>
+                        <li>Forma zona de necrose superficial → estimula barreira dentinária</li>
+                        <li><strong>Limitação:</strong> NÃO apresenta capacidade de selamento</li>
+                    </ul>
+                    <p><strong>MTA (Agregado Trióxido Mineral):</strong></p>
+                    <ul>
+                        <li>Ótima capacidade seladora</li>
+                        <li>Toma presa com umidade (vantagem em ambiente bucal)</li>
+                        <li>Resultados histológicos e clínicos superiores</li>
+                        <li>Forma barreira mineralizada sobre o tecido pulpar</li>
+                    </ul>
+                    <p><strong>MAIS INDICADO: MTA</strong> - devido à capacidade seladora e melhores resultados clínicos.</p>
+                    <p><strong>IMPORTANTE:</strong> Ambos não podem ser aplicados diretamente sobre tecido pulpar em forma de cimento. Usar somente pó ou pasta!</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q4">
+                <h3>Questão 4</h3>
+                <p>Quais são as indicações e contraindicações do Capeamento Pulpar Direto?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp4" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab4')">Ver Gabarito</button>
+                <div class="gabarito" id="gab4">
+                    <h4>Gabarito</h4>
+                    <p><strong>Indicações:</strong></p>
+                    <ul>
+                        <li>Exposição mecânica acidental da polpa</li>
+                        <li>Exposições de pequenas dimensões</li>
+                        <li>Dentes assintomáticos ou com sintomas provocados apenas</li>
+                        <li>Sangramento vermelho vivo com obtenção de hemostasia</li>
+                    </ul>
+                    <p><strong>Contraindicações:</strong></p>
+                    <ul>
+                        <li>Indicação de retentor intrarradicular/protética</li>
+                        <li>Indicação periodontal ou cirúrgica</li>
+                        <li>Sintomas espontâneos (pulpite irreversível sintomática)</li>
+                        <li>Dificuldade de obter hemostasia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q5">
+                <h3>Questão 5</h3>
+                <p>Descreva o protocolo da Pulpotomia Total. Quais são as indicações desse procedimento?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp5" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab5')">Ver Gabarito</button>
+                <div class="gabarito" id="gab5">
+                    <h4>Gabarito</h4>
+                    <p><strong>Indicações:</strong></p>
+                    <ul>
+                        <li>Lesões profundas de cárie com exposição pulpar inevitável</li>
+                        <li>Exposições pulpares maiores de 4mm</li>
+                        <li>Pulpites irreversíveis sintomáticas</li>
+                        <li>Pólipo pulpar e úlcera pulpar</li>
+                    </ul>
+                    <p><strong>Protocolo:</strong></p>
+                    <ol>
+                        <li><strong>Isolamento absoluto!</strong></li>
+                        <li>Remoção total de tecido cariado</li>
+                        <li>Abertura coronária e remoção da polpa coronária</li>
+                        <li>Irrigação com soro fisiológico e controle da hemorragia</li>
+                        <li>Aplicação de material de revestimento pulpar (MTA)</li>
+                        <li>Restauração definitiva</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="questao" id="q6">
+                <h3>Questão 6</h3>
+                <p>Qual medicação intracanal deve ser utilizada em cada situação clínica de Biopulpectomia?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp6" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab6')">Ver Gabarito</button>
+                <div class="gabarito" id="gab6">
+                    <h4>Gabarito</h4>
+                    <p><strong>BIOPULPECTOMIA:</strong></p>
+                    <ul>
+                        <li><strong>Após abertura coronária:</strong> Otosporin</li>
+                        <li><strong>PQM incompleto:</strong> Otosporin</li>
+                        <li><strong>PQM completo:</strong> Otosporin ou Ca(OH)₂</li>
+                    </ul>
+                    <p><strong>Otosporin</strong> = Associação Corticóide-Antibiótico (Hidrocortisona + Sulfato de polimixina B + Sulfato de neomicina)</p>
+                    <p><strong>Propriedades:</strong> Ação anti-inflamatória, diminui exsudação e vasodilatação, diminui proliferação celular.</p>
+                    <p><strong>Tempo máximo:</strong> 7 dias</p>
+                    <p><strong>IMPORTANTE:</strong> Otosporin SOMENTE em biopulpectomia (vitalidade pulpar)</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q7">
+                <h3>Questão 7</h3>
+                <p>Qual medicação intracanal deve ser utilizada em casos de Necrose Pulpar ou Retratamento Endodôntico?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp7" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab7')">Ver Gabarito</button>
+                <div class="gabarito" id="gab7">
+                    <h4>Gabarito</h4>
+                    <p><strong>NECROSE / RETRATAMENTO:</strong></p>
+                    <ul>
+                        <li><strong>Após abertura coronária:</strong> Tricresol formalina</li>
+                        <li><strong>PQM incompleto:</strong> Ca(OH)₂</li>
+                        <li><strong>PQM completo:</strong> Ca(OH)₂</li>
+                    </ul>
+                    <p><strong>Pasta de Hidróxido de Cálcio - Propriedades:</strong></p>
+                    <ul>
+                        <li>Biocompatível</li>
+                        <li>Anti-inflamatório</li>
+                        <li>Indução de tecido mineralizado</li>
+                        <li>Ação anti-hemorrágica</li>
+                        <li>Ação de preenchimento</li>
+                    </ul>
+                    <p><strong>Técnica:</strong> Após PQM completo - Ca(OH)₂ p.a. + veículo + radiopatizante</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q8">
+                <h3>Questão 8</h3>
+                <p>Quais são as indicações para Retratamento Endodôntico?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp8" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab8')">Ver Gabarito</button>
+                <div class="gabarito" id="gab8">
+                    <h4>Gabarito</h4>
+                    <p><strong>Indicações para Retratamento:</strong></p>
+                    <ul>
+                        <li><strong>Tempo de tratamento:</strong> Até 4 anos de acompanhamento sem melhora</li>
+                        <li><strong>Qualidade do tratamento:</strong> Canal esquecido, falha na obturação, subobturação</li>
+                        <li><strong>Sintomatologia:</strong> Fístula, edema, percussão positiva, mobilidade</li>
+                        <li><strong>Suspeita de canal não tratado</strong></li>
+                        <li><strong>Tratamento reabilitador indicado:</strong> Necessidade de pino/coroa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q9">
+                <h3>Questão 9</h3>
+                <p>Descreva a sequência técnica do Retratamento Endodôntico.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp9" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab9')">Ver Gabarito</button>
+                <div class="gabarito" id="gab9">
+                    <h4>Gabarito</h4>
+                    <p><strong>Sequência Técnica do Retratamento:</strong></p>
+                    <ol>
+                        <li>Acesso ao canal radicular</li>
+                        <li>Esvaziamento (remoção do material obturador)</li>
+                        <li>Odontometria</li>
+                        <li>Reinstrumentação</li>
+                        <li>Medicação intracanal (Ca(OH)₂)</li>
+                        <li>Obturação</li>
+                        <li>Restauração</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="questao" id="q10">
+                <h3>Questão 10</h3>
+                <p>Qual a diferença entre Curetagem Pulpar (Pulpotomia Parcial) e Pulpotomia Total? Quando indicar cada uma?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp10" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab10')">Ver Gabarito</button>
+                <div class="gabarito" id="gab10">
+                    <h4>Gabarito</h4>
+                    <p><strong>CURETAGEM PULPAR (Pulpotomia Parcial):</strong></p>
+                    <ul>
+                        <li>Remoção de 2-4mm de tecido pulpar após exposição</li>
+                        <li>Aplicação de biomaterial</li>
+                        <li><strong>Indicações:</strong> Exposições até 4mm, dentes assintomáticos ou com sintomas provocados, exposição por trauma dental (independente do tempo)</li>
+                    </ul>
+                    <p><strong>PULPOTOMIA TOTAL:</strong></p>
+                    <ul>
+                        <li>Remoção de TODA a polpa coronária</li>
+                        <li>Aplicação de material de revestimento</li>
+                        <li><strong>Indicações:</strong> Lesões profundas com exposição inevitável, exposições >4mm, pulpites irreversíveis sintomáticas, pólipo pulpar, úlcera pulpar</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'simulado7_respostas';
+
+        function saveAnswers() {
+            const respostas = {};
+            for (let i = 1; i <= 10; i++) {
+                respostas[`resp${i}`] = document.getElementById(`resp${i}`).value;
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(respostas));
+            alert('Respostas salvas com sucesso!');
+        }
+
+        function loadAnswers() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                const respostas = JSON.parse(saved);
+                for (let i = 1; i <= 10; i++) {
+                    if (respostas[`resp${i}`]) {
+                        document.getElementById(`resp${i}`).value = respostas[`resp${i}`];
+                    }
+                }
+            }
+            updateProgress();
+        }
+
+        function clearAnswers() {
+            if (confirm('Tem certeza que deseja limpar todas as respostas?')) {
+                for (let i = 1; i <= 10; i++) {
+                    document.getElementById(`resp${i}`).value = '';
+                }
+                localStorage.removeItem(STORAGE_KEY);
+                updateProgress();
+            }
+        }
+
+        function toggleGabarito(id) {
+            const gab = document.getElementById(id);
+            gab.classList.toggle('show');
+        }
+
+        function toggleAllGabaritos() {
+            const gabaritos = document.querySelectorAll('.gabarito');
+            const allVisible = Array.from(gabaritos).every(g => g.classList.contains('show'));
+            gabaritos.forEach(g => {
+                if (allVisible) {
+                    g.classList.remove('show');
+                } else {
+                    g.classList.add('show');
+                }
+            });
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            for (let i = 1; i <= 10; i++) {
+                if (document.getElementById(`resp${i}`).value.trim() !== '') {
+                    answered++;
+                }
+            }
+            document.getElementById('progress').textContent = answered;
+            document.getElementById('progressBar').style.width = (answered / 10 * 100) + '%';
+        }
+
+        window.onload = loadAnswers;
+    </script>
+</body>
+</html>
+

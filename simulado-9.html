@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulado 9 - Prótese Fixa e Cimentação</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+    <style>
+        .nav-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-header a {
+            color: #495057;
+            text-decoration: none;
+            font-weight: normal;
+            font-size: 1em;
+            transition: color 0.2s;
+        }
+        .nav-header a:hover {
+            color: #212529;
+            text-decoration: underline;
+        }
+        .questao {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .questao h3 {
+            color: #495057;
+            margin-top: 0;
+        }
+        .sub-item {
+            margin: 15px 0;
+        }
+        .sub-item label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #495057;
+        }
+        .sub-item textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-family: inherit;
+            resize: vertical;
+        }
+        .gabarito {
+            background: #e7f3ff;
+            border: 1px solid #b6d4fe;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+        .gabarito.show {
+            display: block;
+        }
+        .gabarito h4 {
+            margin-top: 0;
+            color: #0a58ca;
+        }
+        .btn-gabarito {
+            background: #495057;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-gabarito:hover {
+            background: #343a40;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-save { background: #198754; color: white; }
+        .btn-toggle { background: #0d6efd; color: white; }
+        .btn-clear { background: #dc3545; color: white; }
+        .progress-bar {
+            background: #e9ecef;
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .progress-fill {
+            background: #198754;
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+        .progress-text {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body class="stackedit">
+    <div class="nav-header">
+        <a href="index.html">← Voltar para Página Inicial</a>
+    </div>
+    <div class="stackedit__right">
+        <div class="stackedit__html">
+            <h1>Simulado 9 - Prótese Fixa e Cimentação</h1>
+            <p><strong>Tema:</strong> Biomecânica, Sequência clínica, Cimentação, Tratamento de superfícies</p>
+
+            <div class="progress-text">Progresso: <span id="progress">0</span>/<span id="total">10</span> questões respondidas</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+            </div>
+
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswers()">💾 Salvar Respostas</button>
+                <button class="btn-toggle" onclick="toggleAllGabaritos()">👁 Mostrar/Ocultar Gabaritos</button>
+                <button class="btn-clear" onclick="clearAnswers()">🗑 Limpar Respostas</button>
+            </div>
+
+            <div class="questao" id="q1">
+                <h3>Questão 1</h3>
+                <p>Quais são as indicações para prótese fixa unitária (coroa total)?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp1" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab1')">Ver Gabarito</button>
+                <div class="gabarito" id="gab1">
+                    <h4>Gabarito</h4>
+                    <p><strong>Indicações:</strong></p>
+                    <ul>
+                        <li>Dente com poucas paredes remanescentes</li>
+                        <li>Raiz remanescente sem férula</li>
+                        <li>Dentes tratados endodonticamente com grande perda estrutural</li>
+                        <li>Malformações dentárias</li>
+                        <li>Diastemas</li>
+                        <li>Alterações de posicionamento</li>
+                        <li>Alterações de cor (não tratáveis por clareamento)</li>
+                        <li>Fratura coronária extensa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q2">
+                <h3>Questão 2</h3>
+                <p>Descreva a sequência clínica mínima para confecção de uma coroa metalocerâmica (5 sessões).</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp2" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab2')">Ver Gabarito</button>
+                <div class="gabarito" id="gab2">
+                    <h4>Gabarito</h4>
+                    <p><strong>Mínimo 5 sessões clínicas:</strong></p>
+                    <ol>
+                        <li><strong>Preparo + Provisório:</strong> Utilizar pontas diamantadas (1014, 3216, 3122, 3195, 3118, 4138, 3098)</li>
+                        <li><strong>Moldagem:</strong> Fio retrator #000 e #00, silicona de adição (1 ou 2 passos)</li>
+                        <li><strong>Prova do coping metálico:</strong> Usar carbono líquido para verificar desajustes internos</li>
+                        <li><strong>Prova da cerâmica:</strong> Ajustar contato proximal, perfil de emergência, oclusão, estética</li>
+                        <li><strong>Cimentação final</strong></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="questao" id="q3">
+                <h3>Questão 3</h3>
+                <p>O que deve ser avaliado no exame clínico extraoral antes de um planejamento protético?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp3" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab3')">Ver Gabarito</button>
+                <div class="gabarito" id="gab3">
+                    <h4>Gabarito</h4>
+                    <p><strong>Exame Extraoral:</strong></p>
+                    <ul>
+                        <li>Perfil facial</li>
+                        <li>Suporte labial</li>
+                        <li>Posição dos lábios</li>
+                        <li>Sulcos naso-labial e naso-geniano</li>
+                        <li>Dimensão vertical de oclusão</li>
+                        <li>Formato do rosto</li>
+                        <li>Linha do sorriso</li>
+                        <li>ATM e músculos mastigatórios</li>
+                    </ul>
+                    <p><strong>Sinais de DVO diminuída:</strong></p>
+                    <ul>
+                        <li>1/3 inferior da face reduzido</li>
+                        <li>Mento projetado</li>
+                        <li>Lábios intruídos</li>
+                        <li>Dificuldade de pronúncia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q4">
+                <h3>Questão 4</h3>
+                <p>Explique a importância da linha do sorriso no planejamento protético e como ela influencia a escolha do material.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp4" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab4')">Ver Gabarito</button>
+                <div class="gabarito" id="gab4">
+                    <h4>Gabarito</h4>
+                    <p><strong>Classificação da Linha do Sorriso:</strong></p>
+                    <ul>
+                        <li><strong>Alta (10%):</strong> Pior prognóstico estético - expõe toda a coroa e parte da gengiva. Priorizar reabilitações livres de metal para evitar linha escura cervical.</li>
+                        <li><strong>Média (70%):</strong> Exposição de 75-100% dos dentes anteriores</li>
+                        <li><strong>Baixa (20%):</strong> Melhor prognóstico - expõe menos de 75% dos dentes</li>
+                    </ul>
+                    <p><strong>Implicação clínica:</strong> Pacientes com linha do sorriso alta exigem maior atenção estética, sendo indicadas cerâmicas puras ou zircônia ao invés de metalocerâmicas.</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q5">
+                <h3>Questão 5</h3>
+                <p>Compare os diferentes tipos de cimentos definitivos para prótese fixa quanto às suas indicações e características.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp5" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab5')">Ver Gabarito</button>
+                <div class="gabarito" id="gab5">
+                    <h4>Gabarito</h4>
+                    <ul>
+                        <li><strong>Fosfato de Zinco:</strong> Metalocerâmicas, metálicas, núcleos, pinos metálicos. 150 anos de uso. Retenção mecânica. Placa de vidro resfriada. Baixo custo.</li>
+                        <li><strong>Ionômero de Vidro:</strong> Metalocerâmicas, metálicas, núcleos. Adesão química à dentina. Liberação de flúor. Sensível à umidade inicial.</li>
+                        <li><strong>Ionômero Modificado por Resina:</strong> Metalocerâmicas, cerâmicas policristalinas. Maior resistência. Expansão higroscópica.</li>
+                        <li><strong>Cimento Resinoso:</strong> Todos os tipos. Adesão química. Baixa solubilidade. Alta resistência. Técnica sensível.</li>
+                        <li><strong>Resinoso Autoadesivo:</strong> Metalocerâmicas, cerâmicas, pinos. Dispensa tratamento dentinário prévio. Polimerização dual.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q6">
+                <h3>Questão 6</h3>
+                <p>Por que cimentos com eugenol são contraindicados quando a cimentação definitiva será com cimento resinoso?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp6" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab6')">Ver Gabarito</button>
+                <div class="gabarito" id="gab6">
+                    <h4>Gabarito</h4>
+                    <p><strong>Resposta:</strong> O eugenol INIBE a polimerização de resinas!</p>
+                    <p>Quando se utiliza cimento provisório com eugenol (óxido de zinco com eugenol), resíduos do eugenol ficam impregnados na dentina. Na cimentação definitiva com cimento resinoso, esses resíduos interferem na reação de polimerização, comprometendo as propriedades mecânicas e a adesão do cimento.</p>
+                    <p><strong>Solução:</strong> Se a cimentação definitiva for com cimento resinoso, usar óxido de zinco SEM eugenol para a cimentação provisória.</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q7">
+                <h3>Questão 7</h3>
+                <p>Descreva o tratamento de superfície para cerâmicas ácido-sensíveis (feldspática, dissilicato de lítio) antes da cimentação.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp7" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab7')">Ver Gabarito</button>
+                <div class="gabarito" id="gab7">
+                    <h4>Gabarito</h4>
+                    <p><strong>Cerâmicas Ácido-Sensíveis:</strong> Feldspática, vítrea reforçada por leucita, dissilicato de lítio</p>
+                    <p><strong>Protocolo:</strong></p>
+                    <ol>
+                        <li>Microjateamento com óxido de alumínio (opcional)</li>
+                        <li>Lavar e secar</li>
+                        <li><strong>Condicionamento com Ácido Fluorídrico 5-10%:</strong>
+                            <ul>
+                                <li>Dissilicato de lítio: 20 segundos</li>
+                                <li>Feldspática: 60 segundos</li>
+                                <li>Leucita: 60 segundos</li>
+                            </ul>
+                        </li>
+                        <li>Lavar abundantemente e secar</li>
+                        <li><strong>Aplicação de Silano</strong> por 1 minuto + secagem</li>
+                        <li>Adesivo hidrofóbico + fotoativação</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="questao" id="q8">
+                <h3>Questão 8</h3>
+                <p>Como tratar a superfície de cerâmicas ácido-resistentes (zircônia, alumina) antes da cimentação?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp8" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab8')">Ver Gabarito</button>
+                <div class="gabarito" id="gab8">
+                    <h4>Gabarito</h4>
+                    <p><strong>Cerâmicas Ácido-Resistentes:</strong> Zircônia, Alumina</p>
+                    <p><strong>Problema:</strong> O ácido fluorídrico NÃO funciona nessas cerâmicas (não dissolve a matriz vítrea porque não há matriz vítrea)</p>
+                    <p><strong>Opções de tratamento:</strong></p>
+                    <ul>
+                        <li><strong>Jateamento com óxido de alumínio:</strong> Cria rugosidade mecânica</li>
+                        <li><strong>Primers com monômeros fosfatados (MDP):</strong> Liga-se quimicamente ao óxido de zircônio</li>
+                        <li><strong>Silicatização (Triboquímica):</strong> Deposita sílica na superfície, permitindo uso do silano</li>
+                    </ul>
+                    <p><strong>Cimentos indicados:</strong> Resinosos com MDP ou autoadesivos</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q9">
+                <h3>Questão 9</h3>
+                <p>Quais são as considerações biomecânicas importantes em prótese fixa múltipla (PPF)?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp9" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab9')">Ver Gabarito</button>
+                <div class="gabarito" id="gab9">
+                    <h4>Gabarito</h4>
+                    <p><strong>Considerações Biomecânicas:</strong></p>
+                    <ul>
+                        <li>Dentes pilares adequados (sem mobilidade patológica)</li>
+                        <li><strong>Proporção coroa:raiz:</strong> Ideal 2:3, mínimo aceitável 1:1</li>
+                        <li>Distribuição de forças ao longo do eixo do dente</li>
+                        <li>Número de dentes pilares proporcional ao número de pônticos</li>
+                        <li>Lei de Ante: área de superfície radicular dos pilares ≥ área dos dentes substituídos</li>
+                        <li>Preparo adequado para espessura de material</li>
+                        <li>Conectores com dimensão adequada</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q10">
+                <h3>Questão 10</h3>
+                <p>Quais são as características ideais de um cimento definitivo para prótese fixa?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp10" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab10')">Ver Gabarito</button>
+                <div class="gabarito" id="gab10">
+                    <h4>Gabarito</h4>
+                    <p><strong>Características Ideais:</strong></p>
+                    <ul>
+                        <li><strong>Biocompatibilidade:</strong> Não irritar tecidos pulpares e periodontais</li>
+                        <li><strong>Resistência mecânica:</strong> Suportar forças mastigatórias</li>
+                        <li><strong>Adesão:</strong> União ao dente e à restauração</li>
+                        <li><strong>Baixa solubilidade:</strong> Não dissolver com fluidos orais</li>
+                        <li><strong>Espessura de película adequada:</strong> Menor que 100µm</li>
+                        <li><strong>Propriedades estéticas:</strong> Cor e translucidez compatíveis</li>
+                        <li><strong>Fácil manipulação:</strong> Tempo de trabalho adequado</li>
+                        <li><strong>Radiopacidade:</strong> Detectável em radiografias</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'simulado9_respostas';
+
+        function saveAnswers() {
+            const respostas = {};
+            for (let i = 1; i <= 10; i++) {
+                respostas[`resp${i}`] = document.getElementById(`resp${i}`).value;
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(respostas));
+            alert('Respostas salvas com sucesso!');
+        }
+
+        function loadAnswers() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                const respostas = JSON.parse(saved);
+                for (let i = 1; i <= 10; i++) {
+                    if (respostas[`resp${i}`]) {
+                        document.getElementById(`resp${i}`).value = respostas[`resp${i}`];
+                    }
+                }
+            }
+            updateProgress();
+        }
+
+        function clearAnswers() {
+            if (confirm('Tem certeza que deseja limpar todas as respostas?')) {
+                for (let i = 1; i <= 10; i++) {
+                    document.getElementById(`resp${i}`).value = '';
+                }
+                localStorage.removeItem(STORAGE_KEY);
+                updateProgress();
+            }
+        }
+
+        function toggleGabarito(id) {
+            const gab = document.getElementById(id);
+            gab.classList.toggle('show');
+        }
+
+        function toggleAllGabaritos() {
+            const gabaritos = document.querySelectorAll('.gabarito');
+            const allVisible = Array.from(gabaritos).every(g => g.classList.contains('show'));
+            gabaritos.forEach(g => {
+                if (allVisible) {
+                    g.classList.remove('show');
+                } else {
+                    g.classList.add('show');
+                }
+            });
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            for (let i = 1; i <= 10; i++) {
+                if (document.getElementById(`resp${i}`).value.trim() !== '') {
+                    answered++;
+                }
+            }
+            document.getElementById('progress').textContent = answered;
+            document.getElementById('progressBar').style.width = (answered / 10 * 100) + '%';
+        }
+
+        window.onload = loadAnswers;
+    </script>
+</body>
+</html>
+

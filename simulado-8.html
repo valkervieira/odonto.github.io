@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulado 8 - Periodontia e Cicatrização</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+    <style>
+        .nav-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-header a {
+            color: #495057;
+            text-decoration: none;
+            font-weight: normal;
+            font-size: 1em;
+            transition: color 0.2s;
+        }
+        .nav-header a:hover {
+            color: #212529;
+            text-decoration: underline;
+        }
+        .questao {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .questao h3 {
+            color: #495057;
+            margin-top: 0;
+        }
+        .sub-item {
+            margin: 15px 0;
+        }
+        .sub-item label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #495057;
+        }
+        .sub-item textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-family: inherit;
+            resize: vertical;
+        }
+        .gabarito {
+            background: #e7f3ff;
+            border: 1px solid #b6d4fe;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+        .gabarito.show {
+            display: block;
+        }
+        .gabarito h4 {
+            margin-top: 0;
+            color: #0a58ca;
+        }
+        .btn-gabarito {
+            background: #495057;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-gabarito:hover {
+            background: #343a40;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-save { background: #198754; color: white; }
+        .btn-toggle { background: #0d6efd; color: white; }
+        .btn-clear { background: #dc3545; color: white; }
+        .progress-bar {
+            background: #e9ecef;
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .progress-fill {
+            background: #198754;
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+        .progress-text {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body class="stackedit">
+    <div class="nav-header">
+        <a href="index.html">← Voltar para Página Inicial</a>
+    </div>
+    <div class="stackedit__right">
+        <div class="stackedit__html">
+            <h1>Simulado 8 - Periodontia e Cicatrização</h1>
+            <p><strong>Tema:</strong> Controle de placa, Cicatrização periodontal, Inserção supracrestal, Hipersensibilidade</p>
+
+            <div class="progress-text">Progresso: <span id="progress">0</span>/<span id="total">10</span> questões respondidas</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+            </div>
+
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswers()">💾 Salvar Respostas</button>
+                <button class="btn-toggle" onclick="toggleAllGabaritos()">👁 Mostrar/Ocultar Gabaritos</button>
+                <button class="btn-clear" onclick="clearAnswers()">🗑 Limpar Respostas</button>
+            </div>
+
+            <div class="questao" id="q1">
+                <h3>Questão 1</h3>
+                <p>Descreva as fases da cicatrização periodontal, incluindo os principais eventos de cada fase.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp1" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab1')">Ver Gabarito</button>
+                <div class="gabarito" id="gab1">
+                    <h4>Gabarito</h4>
+                    <p><strong>1. Resposta Imediata ao Trauma (segundos a minutos):</strong></p>
+                    <ul>
+                        <li>Vasoconstrição por liberação de tromboxano e prostaglandinas</li>
+                        <li>Formação de coágulo (rede de fibrinas, plaquetas, hemácias, bactérias, fatores de crescimento)</li>
+                    </ul>
+                    <p><strong>2. Inflamação (horas a dias):</strong></p>
+                    <ul>
+                        <li>Vasodilatação (histaminas, prostaglandinas, serotonina, citocinas)</li>
+                        <li>Migração de neutrófilos e macrófagos</li>
+                        <li>Sinais clássicos: dor, calor, rubor, edema</li>
+                    </ul>
+                    <p><strong>3. Proliferação (4-14 dias):</strong></p>
+                    <ul>
+                        <li>Baixa tensão de O₂ + lactato estimulam angiogênese</li>
+                        <li>Reepitelização e formação de tecido de granulação</li>
+                        <li>Início da contração da ferida</li>
+                    </ul>
+                    <p><strong>4. Remodelação (8º dia a meses):</strong></p>
+                    <ul>
+                        <li>Maturação das fibras colágenas</li>
+                        <li>Diminuição da densidade celular e vascularização</li>
+                        <li>Reorganização das fibras para aumentar resistência</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q2">
+                <h3>Questão 2</h3>
+                <p>Qual a diferença entre REPARO e REGENERAÇÃO periodontal?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp2" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab2')">Ver Gabarito</button>
+                <div class="gabarito" id="gab2">
+                    <h4>Gabarito</h4>
+                    <p><strong>REPARO:</strong></p>
+                    <ul>
+                        <li>Tecido conjuntivo não especializado</li>
+                        <li>Pode não ter mesma função original</li>
+                        <li>Resulta em epitélio juncional longo</li>
+                    </ul>
+                    <p><strong>REGENERAÇÃO:</strong></p>
+                    <ul>
+                        <li>Restauração completa dos tecidos originais</li>
+                        <li>Recuperação total da função</li>
+                        <li>Nova inserção por células do ligamento periodontal</li>
+                        <li>Formação de novo cemento, novo osso alveolar</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q3">
+                <h3>Questão 3</h3>
+                <p>Quais são os fatores que influenciam negativamente a cicatrização periodontal?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp3" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab3')">Ver Gabarito</button>
+                <div class="gabarito" id="gab3">
+                    <h4>Gabarito</h4>
+                    <ul>
+                        <li><strong>Controle do biofilme deficiente:</strong> IPV alto = cicatrização prejudicada</li>
+                        <li><strong>Fumo:</strong> Vasoconstrição, altera neutrófilos/linfócitos, piora cicatrização significativamente</li>
+                        <li><strong>Obesidade:</strong> Altera neutrófilos e citocinas, maior dificuldade de cicatrização</li>
+                        <li><strong>Diabetes descompensado:</strong> Prejudica neutrófilos, hiperatividade inflamatória, estresse oxidativo</li>
+                    </ul>
+                    <p><strong>Tempo de cicatrização esperado:</strong></p>
+                    <ul>
+                        <li>Gengivite: 7-10 dias</li>
+                        <li>Periodontite: ~3 meses (pode continuar até 9 meses)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q4">
+                <h3>Questão 4</h3>
+                <p>O que são os tecidos de inserção supracrestal e qual sua importância clínica para a Odontologia Restauradora?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp4" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab4')">Ver Gabarito</button>
+                <div class="gabarito" id="gab4">
+                    <h4>Gabarito</h4>
+                    <p><strong>Composição:</strong></p>
+                    <ul>
+                        <li>Epitélio Juncional</li>
+                        <li>Inserção Conjuntiva (ligamento supracrestal)</li>
+                    </ul>
+                    <p><strong>Função:</strong> Estruturas que agem como barreira biológica, protegendo tecidos de sustentação contra agressões bacterianas.</p>
+                    <p><strong>Importância Clínica:</strong> Quando margens restauradoras são posicionadas subgengivalmente afetando os tecidos de inserção supracrestal (menos de 2mm da crista óssea), há comprometimento do estado fisiológico periodontal, desencadeando resposta inflamatória e reorganização das estruturas com perda óssea.</p>
+                    <p><strong>Regra:</strong> Margens restauradoras devem estar a pelo menos 2mm da crista óssea (estudo de Gargiulo).</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q5">
+                <h3>Questão 5</h3>
+                <p>Quais são as possibilidades terapêuticas quando há invasão da inserção supracrestal por margens restauradoras?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp5" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab5')">Ver Gabarito</button>
+                <div class="gabarito" id="gab5">
+                    <h4>Gabarito</h4>
+                    <p><strong>1. Aumento de Coroa Clínica:</strong></p>
+                    <ul>
+                        <li>Remove-se osso alveolar para deixar ±3mm da margem restauradora até a crista óssea</li>
+                        <li>2mm para tecidos supracrestais + 1mm para sulco</li>
+                        <li>Desvantagem: Maior perda de inserção</li>
+                    </ul>
+                    <p><strong>2. Restauração Transcirúrgica:</strong></p>
+                    <ul>
+                        <li>Restauração após rebater retalho mucoperiostal</li>
+                        <li>Sem tornar margens supragengivais</li>
+                        <li>Vantagem: Mais conservadora</li>
+                    </ul>
+                    <p><strong>Material indicado:</strong> CIV é mais indicado em situações de invasão, especialmente em pacientes com bom controle de biofilme e restaurações com adequado acabamento e polimento.</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q6">
+                <h3>Questão 6</h3>
+                <p>Quais são os atributos de um agente químico ideal para controle de placa? Dê exemplos de indicações.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp6" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab6')">Ver Gabarito</button>
+                <div class="gabarito" id="gab6">
+                    <h4>Gabarito</h4>
+                    <p><strong>Atributos:</strong></p>
+                    <ul>
+                        <li><strong>Segurança:</strong> Testado em modelos animais pré-clínicos</li>
+                        <li><strong>Eficácia:</strong> Atividade in vitro não é bom preditor de eficácia clínica</li>
+                        <li><strong>Estabilidade:</strong> Deve ser estável à temperatura ambiente</li>
+                        <li><strong>Substantividade:</strong> Capacidade de permanecer ativo na cavidade bucal por tempo prolongado</li>
+                    </ul>
+                    <p><strong>Indicações como COADJUVANTE:</strong></p>
+                    <ul>
+                        <li>Dificuldades no controle de placa (ortodontia, implantes)</li>
+                        <li>Fase ativa da terapia periodontal</li>
+                        <li>Dificuldades na destreza manual</li>
+                        <li>Problemas de motivação</li>
+                    </ul>
+                    <p><strong>Indicações como SUBSTITUTIVO:</strong></p>
+                    <ul>
+                        <li>Processos agudos do periodonto</li>
+                        <li>Deficientes físicos ou mentais</li>
+                        <li>Pós-operatórios</li>
+                        <li>Imobilização intermaxilar</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q7">
+                <h3>Questão 7</h3>
+                <p>Explique o mecanismo de ação da Clorexidina em superfícies livres de biofilme e em superfícies com biofilme.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp7" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab7')">Ver Gabarito</button>
+                <div class="gabarito" id="gab7">
+                    <h4>Gabarito</h4>
+                    <p><strong>Em superfícies livres de biofilme:</strong></p>
+                    <ul>
+                        <li>Molécula dicatiônica - une-se a compostos aniônicos</li>
+                        <li>Interfere na composição da película adquirida</li>
+                        <li>Altera mecanismo de adesão bacteriana</li>
+                    </ul>
+                    <p><strong>Em superfícies com biofilme:</strong></p>
+                    <ul>
+                        <li>Bacteriostático em baixas concentrações</li>
+                        <li>Bactericida em altas concentrações</li>
+                        <li>Atua na membrana celular bacteriana causando lise</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q8">
+                <h3>Questão 8</h3>
+                <p>Defina Hipersensibilidade Dentinária Cervical e liste seus principais fatores predisponentes.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp8" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab8')">Ver Gabarito</button>
+                <div class="gabarito" id="gab8">
+                    <h4>Gabarito</h4>
+                    <p><strong>Definição:</strong> Resposta dolorosa, curta, exagerada, provocada quando dentina exposta recebe estímulos térmicos, mecânicos ou químicos.</p>
+                    <p><strong>Fatores Predisponentes:</strong></p>
+                    <ul>
+                        <li><strong>Recessão gengival:</strong> Expõe área de túbulos numerosos e maiores</li>
+                        <li><strong>Ácidos:</strong> Dieta rica em alimentos ácidos (exógenos) ou doenças sistêmicas (refluxo, bulimia)</li>
+                        <li><strong>Controle do biofilme:</strong> Biofilme estimula produção de substâncias que movimentam fluidos nos túbulos</li>
+                        <li><strong>Escovação traumática:</strong> Movimentos amplos, força demasiada, cerdas inadequadas</li>
+                        <li><strong>Tratamento periodontal:</strong> Recessão pós-tratamento (temporária)</li>
+                        <li><strong>Clareamento:</strong> Quanto maior a concentração, mais sensibilidade</li>
+                    </ul>
+                    <p><strong>Dado importante:</strong> Cemento cervical tem apenas 20-50µm e é facilmente removido. 5-10% dos pacientes possuem GAP entre cemento e esmalte.</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q9">
+                <h3>Questão 9</h3>
+                <p>Compare fio dental e escovas interdentais quanto às indicações e características de uso.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp9" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab9')">Ver Gabarito</button>
+                <div class="gabarito" id="gab9">
+                    <h4>Gabarito</h4>
+                    <p><strong>Fio/Fita Dental:</strong></p>
+                    <ul>
+                        <li>Indicado onde NÃO há espaços interdentais</li>
+                        <li>Para papilas preenchendo todo o espaço interproximal</li>
+                    </ul>
+                    <p><strong>Escovas Interdentais:</strong></p>
+                    <ul>
+                        <li>Necessitam de espaço entre os dentes</li>
+                        <li>Podem ser utilizadas mais de uma vez</li>
+                        <li>Ideais para pacientes com histórico de periodontite</li>
+                        <li>Maior adesão pelo paciente comparado ao fio dental</li>
+                        <li>Diferentes tamanhos podem ser necessários para diferentes espaços</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q10">
+                <h3>Questão 10</h3>
+                <p>Como avaliar a cicatrização periodontal após RASUB (Raspagem Subgengival)? Quais são os resultados possíveis?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp10" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab10')">Ver Gabarito</button>
+                <div class="gabarito" id="gab10">
+                    <h4>Gabarito</h4>
+                    <p><strong>Critérios Imediatos:</strong> Profundidade de Sondagem (PS) e Sangramento Subgengival (SS)</p>
+                    <p><strong>Critérios Mediatos (+6 meses):</strong> Níveis de Inserção e Níveis Ósseos</p>
+                    <p><strong>Resultados após RASUB:</strong></p>
+                    <ul>
+                        <li><strong>Ideal:</strong> Redução de PS + SS ausente</li>
+                        <li><strong>Favorável:</strong> Redução de um parâmetro, outro mantido (ainda em fase de cicatrização)</li>
+                        <li><strong>Desfavorável:</strong> Manutenção de todos os resultados → Retratamento indicado</li>
+                    </ul>
+                    <p><strong>Tempo de Avaliação:</strong></p>
+                    <ul>
+                        <li>Até 90 dias: Periodontites Grau A e B</li>
+                        <li>Até 120 dias: Periodontite Grau C</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'simulado8_respostas';
+
+        function saveAnswers() {
+            const respostas = {};
+            for (let i = 1; i <= 10; i++) {
+                respostas[`resp${i}`] = document.getElementById(`resp${i}`).value;
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(respostas));
+            alert('Respostas salvas com sucesso!');
+        }
+
+        function loadAnswers() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                const respostas = JSON.parse(saved);
+                for (let i = 1; i <= 10; i++) {
+                    if (respostas[`resp${i}`]) {
+                        document.getElementById(`resp${i}`).value = respostas[`resp${i}`];
+                    }
+                }
+            }
+            updateProgress();
+        }
+
+        function clearAnswers() {
+            if (confirm('Tem certeza que deseja limpar todas as respostas?')) {
+                for (let i = 1; i <= 10; i++) {
+                    document.getElementById(`resp${i}`).value = '';
+                }
+                localStorage.removeItem(STORAGE_KEY);
+                updateProgress();
+            }
+        }
+
+        function toggleGabarito(id) {
+            const gab = document.getElementById(id);
+            gab.classList.toggle('show');
+        }
+
+        function toggleAllGabaritos() {
+            const gabaritos = document.querySelectorAll('.gabarito');
+            const allVisible = Array.from(gabaritos).every(g => g.classList.contains('show'));
+            gabaritos.forEach(g => {
+                if (allVisible) {
+                    g.classList.remove('show');
+                } else {
+                    g.classList.add('show');
+                }
+            });
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            for (let i = 1; i <= 10; i++) {
+                if (document.getElementById(`resp${i}`).value.trim() !== '') {
+                    answered++;
+                }
+            }
+            document.getElementById('progress').textContent = answered;
+            document.getElementById('progressBar').style.width = (answered / 10 * 100) + '%';
+        }
+
+        window.onload = loadAnswers;
+    </script>
+</body>
+</html>
+

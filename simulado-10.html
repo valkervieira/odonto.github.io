@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulado 10 - Clareamento, Pinos e Facetas</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+    <style>
+        .nav-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-header a {
+            color: #495057;
+            text-decoration: none;
+            font-weight: normal;
+            font-size: 1em;
+            transition: color 0.2s;
+        }
+        .nav-header a:hover {
+            color: #212529;
+            text-decoration: underline;
+        }
+        .questao {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .questao h3 {
+            color: #495057;
+            margin-top: 0;
+        }
+        .sub-item {
+            margin: 15px 0;
+        }
+        .sub-item label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #495057;
+        }
+        .sub-item textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-family: inherit;
+            resize: vertical;
+        }
+        .gabarito {
+            background: #e7f3ff;
+            border: 1px solid #b6d4fe;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+        .gabarito.show {
+            display: block;
+        }
+        .gabarito h4 {
+            margin-top: 0;
+            color: #0a58ca;
+        }
+        .btn-gabarito {
+            background: #495057;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-gabarito:hover {
+            background: #343a40;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-save { background: #198754; color: white; }
+        .btn-toggle { background: #0d6efd; color: white; }
+        .btn-clear { background: #dc3545; color: white; }
+        .progress-bar {
+            background: #e9ecef;
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .progress-fill {
+            background: #198754;
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+        .progress-text {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body class="stackedit">
+    <div class="nav-header">
+        <a href="index.html">← Voltar para Página Inicial</a>
+    </div>
+    <div class="stackedit__right">
+        <div class="stackedit__html">
+            <h1>Simulado 10 - Clareamento, Pinos e Facetas</h1>
+            <p><strong>Tema:</strong> Clareamento dental, Pinos intrarradiculares, Facetas diretas e indiretas</p>
+
+            <div class="progress-text">Progresso: <span id="progress">0</span>/<span id="total">10</span> questões respondidas</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+            </div>
+
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswers()">💾 Salvar Respostas</button>
+                <button class="btn-toggle" onclick="toggleAllGabaritos()">👁 Mostrar/Ocultar Gabaritos</button>
+                <button class="btn-clear" onclick="clearAnswers()">🗑 Limpar Respostas</button>
+            </div>
+
+            <div class="questao" id="q1">
+                <h3>Questão 1</h3>
+                <p>Diferencie os tipos de manchamento dental (extrínseco e intrínseco) e dê exemplos de cada.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp1" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab1')">Ver Gabarito</button>
+                <div class="gabarito" id="gab1">
+                    <h4>Gabarito</h4>
+                    <p><strong>Extrínseco:</strong> Proveniente da dieta</p>
+                    <ul>
+                        <li>Café, cigarro, vinho, chás</li>
+                        <li>Removível com profilaxia</li>
+                    </ul>
+                    <p><strong>Intrínseco:</strong></p>
+                    <ul>
+                        <li><strong>Congênito:</strong> Dentinogênese imperfeita, amelogênese imperfeita</li>
+                        <li><strong>Adquirido pré-eruptivo:</strong> Tetraciclina, eritroblastose fetal, fluorose</li>
+                        <li><strong>Adquirido pós-eruptivo:</strong> Necrose pulpar, traumatismo, envelhecimento</li>
+                    </ul>
+                    <p><strong>Importante:</strong> Dentes marrons respondem melhor ao clareamento! Tetraciclina requer tratamento mais longo.</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q2">
+                <h3>Questão 2</h3>
+                <p>Compare o clareamento caseiro e o clareamento em consultório quanto a concentrações e protocolos.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp2" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab2')">Ver Gabarito</button>
+                <div class="gabarito" id="gab2">
+                    <h4>Gabarito</h4>
+                    <p><strong>CLAREAMENTO CASEIRO:</strong></p>
+                    <ul>
+                        <li>Peróxido de carbamida: 10% a 22%</li>
+                        <li>Peróxido de hidrogênio: 5% a 7,5%</li>
+                        <li>Associado a moldeiras personalizadas</li>
+                        <li>Uso noturno ou por algumas horas diárias</li>
+                    </ul>
+                    <p><strong>CLAREAMENTO EM CONSULTÓRIO:</strong></p>
+                    <ul>
+                        <li>Concentração: 35% a 38% (ou 20% com luz)</li>
+                        <li>NÃO pode ter contato com tecidos moles (usar Top Dam)</li>
+                        <li>Intervalo mínimo de 7 dias entre sessões</li>
+                        <li>Sensibilidade intensa pode ocorrer até 24h após</li>
+                    </ul>
+                    <p><strong>IMPORTANTE:</strong> Restaurar somente 16 dias após término do clareamento (estabilização da cor e do adesivo)!</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q3">
+                <h3>Questão 3</h3>
+                <p>Quais são os pré-requisitos para realizar clareamento interno em dentes não vitais?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp3" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab3')">Ver Gabarito</button>
+                <div class="gabarito" id="gab3">
+                    <h4>Gabarito</h4>
+                    <p><strong>Pré-requisitos:</strong></p>
+                    <ul>
+                        <li>Mais de 50% da face vestibular íntegra</li>
+                        <li>Bom selamento radicular (tratamento endodôntico adequado)</li>
+                        <li>Dente assintomático</li>
+                        <li>Lesão apical inativa (se houver)</li>
+                        <li>Remoção total da dentina cariada</li>
+                        <li>Selamento hermético com material de base (tampão cervical)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q4">
+                <h3>Questão 4</h3>
+                <p>Descreva a técnica Walking Bleach e explique o protocolo do tampão cervical.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp4" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab4')">Ver Gabarito</button>
+                <div class="gabarito" id="gab4">
+                    <h4>Gabarito</h4>
+                    <p><strong>Walking Bleach (Padrão Ouro):</strong></p>
+                    <ul>
+                        <li>Agente: Perborato de sódio ou Peróxido de Carbamida 37%</li>
+                        <li>Câmara pulpar é fechada com o agente clareador</li>
+                        <li>Paciente retorna em 7 dias para troca</li>
+                        <li>Vantagens: Baixo custo, eficácia comprovada, menos tempo clínico</li>
+                    </ul>
+                    <p><strong>Protocolo do Tampão Cervical:</strong></p>
+                    <p><em>Objetivo:</em> Impedir passagem do agente clareador para região cervical/periodonto, evitando reabsorção radicular externa.</p>
+                    <ol>
+                        <li>Registro fotográfico com escala Vita</li>
+                        <li>Medir comprimento da coroa até JCE</li>
+                        <li>Isolamento absoluto</li>
+                        <li>Abertura coronária - remover toda dentina pigmentada</li>
+                        <li>Desobturar 2mm abaixo da JCE</li>
+                        <li><strong>Colocar ionômero de vidro 2mm ao nível da JCE</strong></li>
+                        <li>Condicionamento ácido, lavar</li>
+                        <li>Perborato com água na cavidade</li>
+                        <li>Sistema adesivo + restauração provisória</li>
+                        <li><strong>Ao final do tratamento: Pasta de Ca(OH)₂ por 14 dias</strong></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="questao" id="q5">
+                <h3>Questão 5</h3>
+                <p>Quais são as indicações para uso de pinos intrarradiculares de fibra de vidro? O que é a "férula"?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp5" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab5')">Ver Gabarito</button>
+                <div class="gabarito" id="gab5">
+                    <h4>Gabarito</h4>
+                    <p><strong>Indicações:</strong></p>
+                    <ul>
+                        <li>Grande perda tecidual coronária</li>
+                        <li>Lesões cariosas extensas com pouca estrutura remanescente</li>
+                        <li>Dentes anteriores com alterações de cor</li>
+                        <li>Facetas em dentes escurecidos</li>
+                        <li>Restaurações extensas diretas e indiretas</li>
+                        <li>Raízes fragilizadas</li>
+                    </ul>
+                    <p><strong>FÉRULA:</strong></p>
+                    <ul>
+                        <li>Mínimo 2mm de estrutura dental na região cervical</li>
+                        <li>Responsável pelo "abraçamento" do remanescente coronário</li>
+                        <li>Evita que a sobrecarga mastigatória atue diretamente na porção coronária do núcleo</li>
+                        <li><strong>Essencial para o sucesso do tratamento!</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q6">
+                <h3>Questão 6</h3>
+                <p>Descreva o protocolo de preparo e cimentação de um pino de fibra de vidro.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp6" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab6')">Ver Gabarito</button>
+                <div class="gabarito" id="gab6">
+                    <h4>Gabarito</h4>
+                    <p><strong>Planejamento:</strong></p>
+                    <ul>
+                        <li>3-5mm de material obturador no terço apical</li>
+                        <li>Relação 1:1 entre altura da coroa e comprimento radicular do pino</li>
+                        <li>Pino deve estender-se por pelo menos metade da raiz com suporte ósseo</li>
+                        <li>Ao menos 1,5-2mm de estrutura dental (férula)</li>
+                    </ul>
+                    <p><strong>Preparo do Pino:</strong></p>
+                    <ol>
+                        <li>Aplicar silano em todo o pino</li>
+                        <li>Volatilização dos solventes</li>
+                        <li>Aplicar sistema adesivo em toda superfície</li>
+                        <li>Volatilização com jato de ar</li>
+                        <li>Fotopolimerizar</li>
+                    </ol>
+                    <p><strong>Tratamento do Conduto:</strong></p>
+                    <ol>
+                        <li>Limpeza com clorexidina 2%</li>
+                        <li>Lavar abundantemente, secar com cânula e cones de papel</li>
+                        <li>Adesivo autocondicionante (sem ácido - difícil controlar umidade)</li>
+                        <li>Aplicar adesivo com microbrush cilíndrico</li>
+                        <li>Volatilização com ar e papel absorvente</li>
+                    </ol>
+                    <p><strong>Cimentação:</strong></p>
+                    <ol>
+                        <li>Cimento resinoso dual ou bulkfill</li>
+                        <li>Inserção com seringa Centrix</li>
+                        <li>Levar pino em posição</li>
+                        <li>Remover excessos</li>
+                        <li>Fotopolimerizar 40 segundos</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="questao" id="q7">
+                <h3>Questão 7</h3>
+                <p>Quais são as indicações, contraindicações e vantagens das facetas diretas em resina composta?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp7" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab7')">Ver Gabarito</button>
+                <div class="gabarito" id="gab7">
+                    <h4>Gabarito</h4>
+                    <p><strong>Indicações:</strong></p>
+                    <ul>
+                        <li>Melhora estética</li>
+                        <li>Fraturas extensas de incisivos</li>
+                        <li>Múltiplas restaurações deficientes</li>
+                        <li>Alterações de cor, forma, posição</li>
+                        <li>Malformação dental</li>
+                        <li>Alinhamento dental</li>
+                        <li>Fechamento de diastema</li>
+                    </ul>
+                    <p><strong>Contraindicações:</strong></p>
+                    <ul>
+                        <li>Ausência de esmalte vestibular</li>
+                        <li>Bruxismo severo</li>
+                        <li>Mordida em topo</li>
+                    </ul>
+                    <p><strong>Vantagens:</strong></p>
+                    <ul>
+                        <li>Preparo conservador</li>
+                        <li>Baixo custo</li>
+                        <li>Reversível (quando sem preparo)</li>
+                        <li>Sessão única</li>
+                        <li>Fácil reparo</li>
+                        <li>Dispensa provisório</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q8">
+                <h3>Questão 8</h3>
+                <p>Descreva as etapas do preparo dental para faceta direta em resina.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp8" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab8')">Ver Gabarito</button>
+                <div class="gabarito" id="gab8">
+                    <h4>Gabarito</h4>
+                    <p><strong>Etapas do Preparo:</strong></p>
+                    <ol>
+                        <li><strong>Canaleta cervical:</strong> Ponta 1014 - metade da ponta ativa, de ângulo a ângulo</li>
+                        <li><strong>Canaleta central:</strong> Ponta 2135 ou 4138 - acompanhando curvatura vestibular</li>
+                        <li><strong>Desgaste das ilhas de esmalte:</strong> União das canaletas</li>
+                        <li><strong>Invadir subcontato:</strong> Entrar na ameia vestibular sem romper ponto de contato</li>
+                    </ol>
+                    <p><strong>Profundidade do Preparo:</strong></p>
+                    <ul>
+                        <li><strong>Sem desgaste:</strong> Apenas asperização superficial (dentes pequenos, conoides)</li>
+                        <li><strong>Esmalte:</strong> Fundo claro, sem alteração de cor</li>
+                        <li><strong>Esmalte/Dentina:</strong> Com alteração de cor significativa (preparo mais profundo)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q9">
+                <h3>Questão 9</h3>
+                <p>Compare facetas diretas (resina) e indiretas (cerâmica) quanto a indicações e características.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp9" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab9')">Ver Gabarito</button>
+                <div class="gabarito" id="gab9">
+                    <h4>Gabarito</h4>
+                    <p><strong>FACETAS DIRETAS (Resina):</strong></p>
+                    <ul>
+                        <li>Sessão única</li>
+                        <li>Menor custo</li>
+                        <li>Fácil reparo</li>
+                        <li>Menor estabilidade de cor a longo prazo</li>
+                        <li>Maior desgaste com o tempo</li>
+                        <li>Indicada para casos mais simples</li>
+                    </ul>
+                    <p><strong>FACETAS INDIRETAS (Cerâmica/Laminados):</strong></p>
+                    <ul>
+                        <li>Múltiplas sessões (mínimo 3-5)</li>
+                        <li>Maior custo</li>
+                        <li>Reparo mais complexo</li>
+                        <li>Excelente estabilidade de cor</li>
+                        <li>Alta resistência ao desgaste</li>
+                        <li>Longevidade superior</li>
+                        <li>Reforço da estrutura dental quando cimentada</li>
+                        <li>Indicada para reabilitações extensas e alta demanda estética</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q10">
+                <h3>Questão 10</h3>
+                <p>O que é o Selamento Dentinário Imediato em laminados cerâmicos? Quando deve ser realizado?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp10" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab10')">Ver Gabarito</button>
+                <div class="gabarito" id="gab10">
+                    <h4>Gabarito</h4>
+                    <p><strong>Selamento Dentinário Imediato (SDI):</strong></p>
+                    <p>Aplicação de sistema adesivo sobre a dentina exposta no preparo, ANTES da moldagem/provisório.</p>
+                    <p><strong>Quando realizar:</strong> Sempre que houver envolvimento de dentina no preparo para restaurações indiretas.</p>
+                    <p><strong>Técnica:</strong></p>
+                    <ol>
+                        <li>Condicionamento ácido + primer + adesivo + fotoativação</li>
+                        <li>Aplicação de mais 1 camada de adesivo hidrofóbico + fotoativação</li>
+                    </ol>
+                    <p><strong>Vantagens:</strong></p>
+                    <ul>
+                        <li>Maior espessura da camada adesiva</li>
+                        <li>Melhor absorção de tensões de polimerização</li>
+                        <li>Diminuição da infiltração marginal</li>
+                        <li>Proteção da dentina contra estímulos</li>
+                        <li>Adesão otimizada (dentina recém-cortada é mais receptiva)</li>
+                        <li>Menor sensibilidade pós-operatória</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'simulado10_respostas';
+
+        function saveAnswers() {
+            const respostas = {};
+            for (let i = 1; i <= 10; i++) {
+                respostas[`resp${i}`] = document.getElementById(`resp${i}`).value;
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(respostas));
+            alert('Respostas salvas com sucesso!');
+        }
+
+        function loadAnswers() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                const respostas = JSON.parse(saved);
+                for (let i = 1; i <= 10; i++) {
+                    if (respostas[`resp${i}`]) {
+                        document.getElementById(`resp${i}`).value = respostas[`resp${i}`];
+                    }
+                }
+            }
+            updateProgress();
+        }
+
+        function clearAnswers() {
+            if (confirm('Tem certeza que deseja limpar todas as respostas?')) {
+                for (let i = 1; i <= 10; i++) {
+                    document.getElementById(`resp${i}`).value = '';
+                }
+                localStorage.removeItem(STORAGE_KEY);
+                updateProgress();
+            }
+        }
+
+        function toggleGabarito(id) {
+            const gab = document.getElementById(id);
+            gab.classList.toggle('show');
+        }
+
+        function toggleAllGabaritos() {
+            const gabaritos = document.querySelectorAll('.gabarito');
+            const allVisible = Array.from(gabaritos).every(g => g.classList.contains('show'));
+            gabaritos.forEach(g => {
+                if (allVisible) {
+                    g.classList.remove('show');
+                } else {
+                    g.classList.add('show');
+                }
+            });
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            for (let i = 1; i <= 10; i++) {
+                if (document.getElementById(`resp${i}`).value.trim() !== '') {
+                    answered++;
+                }
+            }
+            document.getElementById('progress').textContent = answered;
+            document.getElementById('progressBar').style.width = (answered / 10 * 100) + '%';
+        }
+
+        window.onload = loadAnswers;
+    </script>
+</body>
+</html>
+

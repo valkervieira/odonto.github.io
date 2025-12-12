@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulado 6 - Cariologia e Diagnóstico Pulpar</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+    <style>
+        .nav-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-header a {
+            color: #495057;
+            text-decoration: none;
+            font-weight: normal;
+            font-size: 1em;
+            transition: color 0.2s;
+        }
+        .nav-header a:hover {
+            color: #212529;
+            text-decoration: underline;
+        }
+        .questao {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .questao h3 {
+            color: #495057;
+            margin-top: 0;
+        }
+        .sub-item {
+            margin: 15px 0;
+        }
+        .sub-item label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #495057;
+        }
+        .sub-item textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-family: inherit;
+            resize: vertical;
+        }
+        .gabarito {
+            background: #e7f3ff;
+            border: 1px solid #b6d4fe;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+        .gabarito.show {
+            display: block;
+        }
+        .gabarito h4 {
+            margin-top: 0;
+            color: #0a58ca;
+        }
+        .btn-gabarito {
+            background: #495057;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-gabarito:hover {
+            background: #343a40;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-save {
+            background: #198754;
+            color: white;
+        }
+        .btn-toggle {
+            background: #0d6efd;
+            color: white;
+        }
+        .btn-clear {
+            background: #dc3545;
+            color: white;
+        }
+        .progress-bar {
+            background: #e9ecef;
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .progress-fill {
+            background: #198754;
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+        .progress-text {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body class="stackedit">
+    <div class="nav-header">
+        <a href="index.html">← Voltar para Página Inicial</a>
+    </div>
+    <div class="stackedit__right">
+        <div class="stackedit__html">
+            <h1>Simulado 6 - Cariologia e Diagnóstico Pulpar</h1>
+            <p><strong>Tema:</strong> Doença cárie, Diagnóstico das doenças da polpa</p>
+
+            <div class="progress-text">Progresso: <span id="progress">0</span>/<span id="total">10</span> questões respondidas</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+            </div>
+
+            <div class="actions">
+                <button class="btn-save" onclick="saveAnswers()">💾 Salvar Respostas</button>
+                <button class="btn-toggle" onclick="toggleAllGabaritos()">👁 Mostrar/Ocultar Gabaritos</button>
+                <button class="btn-clear" onclick="clearAnswers()">🗑 Limpar Respostas</button>
+            </div>
+
+            <div class="questao" id="q1">
+                <h3>Questão 1</h3>
+                <p>A cárie dental é considerada uma doença multifatorial. Quais são os principais fatores envolvidos na etiologia da cárie dental?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp1" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab1')">Ver Gabarito</button>
+                <div class="gabarito" id="gab1">
+                    <h4>Gabarito</h4>
+                    <p><strong>Fatores principais:</strong></p>
+                    <ul>
+                        <li><strong>Biofilme</strong> - fator etiológico primário</li>
+                        <li><strong>Saliva</strong> - capacidade tampão, componentes antimicrobianos, fluxo salivar</li>
+                        <li><strong>Dieta</strong> - composição, consistência e frequência de carboidratos fermentáveis</li>
+                        <li><strong>Espécies microbianas</strong></li>
+                        <li><strong>Disponibilidade de flúor</strong></li>
+                        <li><strong>Fatores moduladores</strong> - escolaridade, renda, acesso à saúde</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q2">
+                <h3>Questão 2</h3>
+                <p>Como a sacarose aumenta a cariogenicidade do biofilme dental?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp2" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab2')">Ver Gabarito</button>
+                <div class="gabarito" id="gab2">
+                    <h4>Gabarito</h4>
+                    <p>A sacarose aumenta a cariogenicidade do biofilme pois <strong>aumenta sua porosidade</strong>, permitindo que carboidratos fermentáveis cheguem às <strong>camadas mais profundas</strong> do biofilme, em contato direto com a superfície do dente, intensificando a produção de ácidos na interface dente-biofilme.</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q3">
+                <h3>Questão 3</h3>
+                <p>Descreva as características clínicas de uma lesão de cárie ATIVA não cavitada versus uma lesão INATIVA não cavitada.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp3" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab3')">Ver Gabarito</button>
+                <div class="gabarito" id="gab3">
+                    <h4>Gabarito</h4>
+                    <p><strong>Lesão ATIVA não cavitada:</strong> Branca, rugosa, opaca</p>
+                    <p><strong>Lesão INATIVA não cavitada:</strong> Branca ou marrom, rugosa, porém brilhante</p>
+                    <p>A principal diferença visual é o brilho: lesões inativas apresentam superfície brilhante devido à remineralização superficial, enquanto lesões ativas são opacas.</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q4">
+                <h3>Questão 4</h3>
+                <p>Como diferenciar clinicamente uma mancha branca de cárie de uma fluorose dental?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp4" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab4')">Ver Gabarito</button>
+                <div class="gabarito" id="gab4">
+                    <h4>Gabarito</h4>
+                    <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                        <tr style="background: #f1f1f1;">
+                            <th style="border: 1px solid #ddd; padding: 8px;">Característica</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Cárie</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Fluorose</th>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Forma</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Acompanha formato da gengiva</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Acompanha estrias de Retzius</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Dentes</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Relacionado ao acúmulo de biofilme</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Dentes homólogos (mesmo período de erupção)</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Região subgengival</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Esmalte normal</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Esmalte afetado</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="questao" id="q5">
+                <h3>Questão 5</h3>
+                <p>Quais são as indicações para realizar a Remoção Seletiva de Tecido Cariado? Qual o protocolo restaurador após esse procedimento?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp5" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab5')">Ver Gabarito</button>
+                <div class="gabarito" id="gab5">
+                    <h4>Gabarito</h4>
+                    <p><strong>Indicações:</strong></p>
+                    <ul>
+                        <li>Lesão profunda sem dor espontânea (apenas dor provocada)</li>
+                        <li>Teste de sensibilidade pulpar ao frio positivo</li>
+                        <li>Percussão vertical negativo</li>
+                        <li>Radiografia sem envolvimento pulpar ou lesão periapical</li>
+                        <li>Ausência de dor forte e constante</li>
+                    </ul>
+                    <p><strong>Protocolo:</strong> Forramento com ionômero de vidro + restauração definitiva</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q6">
+                <h3>Questão 6</h3>
+                <p>Descreva as características clínicas e sintomatológicas da Pulpite Irreversível Sintomática.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp6" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab6')">Ver Gabarito</button>
+                <div class="gabarito" id="gab6">
+                    <h4>Gabarito</h4>
+                    <p><strong>Características da Pulpite Irreversível Sintomática:</strong></p>
+                    <ul>
+                        <li>Dor <strong>espontânea</strong></li>
+                        <li>Intermitente ou contínua</li>
+                        <li>Difusa ou referida (mal localizada)</li>
+                        <li>Pulsátil/latejante</li>
+                        <li>Intensa</li>
+                        <li>Paroxística (piora e melhora em ciclos)</li>
+                        <li>Aumentada em decúbito (noturna)</li>
+                        <li>Ineficácia de analgésicos convencionais</li>
+                    </ul>
+                    <p><strong>Testes:</strong></p>
+                    <ul>
+                        <li>Percussão: Negativo ou levemente positivo</li>
+                        <li>Sensibilidade ao frio: Positiva aumentada OU alívio inicial seguido de dor intensa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="questao" id="q7">
+                <h3>Questão 7</h3>
+                <p>O que são as Alterações Pulpares Degenerativas? Quais são suas características clínicas e radiográficas?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp7" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab7')">Ver Gabarito</button>
+                <div class="gabarito" id="gab7">
+                    <h4>Gabarito</h4>
+                    <p><strong>Causa:</strong> Estímulos de baixa intensidade e longa duração</p>
+                    <p><strong>Aspectos histológicos:</strong></p>
+                    <ul>
+                        <li>Atresia do canal radicular e câmara pulpar</li>
+                        <li>Redução da celularidade pulpar</li>
+                        <li>Formação de ilhas de calcificação</li>
+                        <li>Formação de dentina terciária</li>
+                        <li>Dentina esclerosada</li>
+                    </ul>
+                    <p><strong>Sensibilidade pulpar:</strong> Reduzida (pode responder negativo ou positivo)</p>
+                    <p><strong>Radiograficamente:</strong> Espessura radicular aumentada, redução da cavidade pulpar, áreas radiopacas no interior da câmara/canais</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q8">
+                <h3>Questão 8</h3>
+                <p>Diferencie Úlcera Pulpar de Pólipo Pulpar quanto às características clínicas e tratamento.</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp8" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab8')">Ver Gabarito</button>
+                <div class="gabarito" id="gab8">
+                    <h4>Gabarito</h4>
+                    <p><strong>Úlcera Pulpar:</strong></p>
+                    <ul>
+                        <li>Exposição pulpar ao meio bucal</li>
+                        <li>Dor provocada por toque/mastigação</li>
+                        <li>Cavidade aberta = drenagem = pouca dor espontânea</li>
+                        <li>Sensibilidade: Positiva normal</li>
+                    </ul>
+                    <p><strong>Pólipo Pulpar (Hiperplásico):</strong></p>
+                    <ul>
+                        <li>Proliferação de tecido de granulação para fora da câmara</li>
+                        <li>Infiltrado inflamatório crônico</li>
+                        <li>Recoberto por epitélio</li>
+                        <li>Dor ao toque/mastigação, pouca dor espontânea</li>
+                        <li><strong>Diagnóstico diferencial:</strong> Pólipo gengival, pólipo periodontal</li>
+                    </ul>
+                    <p><strong>Tratamento de ambos:</strong> Pulpotomia ou Pulpectomia (tratamento endodôntico)</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q9">
+                <h3>Questão 9</h3>
+                <p>Qual é a sequência correta do exame clínico para diagnóstico de lesão de cárie?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp9" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab9')">Ver Gabarito</button>
+                <div class="gabarito" id="gab9">
+                    <h4>Gabarito</h4>
+                    <p><strong>Sequência do exame das superfícies dentárias:</strong></p>
+                    <ol>
+                        <li><strong>Deplacagem:</strong> Fio dental, escova Robinson, taça de borracha</li>
+                        <li><strong>Isolamento relativo</strong></li>
+                        <li><strong>Secagem</strong> - <em>diagnóstico de cárie SEMPRE com superfície seca!</em></li>
+                        <li><strong>Diagnóstico da lesão</strong></li>
+                    </ol>
+                    <p><strong>Importante:</strong> Começar o exame pela superfície livre. Registrar IPV (Índice de Placa Visível) e ISG (Índice de Sangramento Gengival).</p>
+                </div>
+            </div>
+
+            <div class="questao" id="q10">
+                <h3>Questão 10</h3>
+                <p>Quais informações devem ser coletadas na anamnese/entrevista dialogada para avaliação do risco de cárie?</p>
+                <div class="sub-item">
+                    <label>Sua resposta:</label>
+                    <textarea id="resp10" oninput="updateProgress()"></textarea>
+                </div>
+                <button class="btn-gabarito" onclick="toggleGabarito('gab10')">Ver Gabarito</button>
+                <div class="gabarito" id="gab10">
+                    <h4>Gabarito</h4>
+                    <p><strong>Informações da entrevista dialogada:</strong></p>
+                    <ul>
+                        <li><strong>Dados pessoais:</strong> Idade, endereço (acesso a flúor na água), profissão</li>
+                        <li><strong>Fonte de água:</strong> Poço artesiano vs abastecimento público (fluoretação)</li>
+                        <li><strong>Saúde geral:</strong> Medicamentos que causam xerostomia, radioterapia de cabeça e pescoço, Síndrome de Sjögren</li>
+                        <li><strong>Hábitos de higiene:</strong> Frequência de escovação, uso de fio dental, técnica</li>
+                        <li><strong>Forma de acesso ao flúor:</strong> Dentifrício fluoretado, bochechos, aplicações profissionais</li>
+                        <li><strong>Dieta:</strong> Frequência e composição (especialmente carboidratos fermentáveis)</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'simulado6_respostas';
+
+        function saveAnswers() {
+            const respostas = {};
+            for (let i = 1; i <= 10; i++) {
+                respostas[`resp${i}`] = document.getElementById(`resp${i}`).value;
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(respostas));
+            alert('Respostas salvas com sucesso!');
+        }
+
+        function loadAnswers() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                const respostas = JSON.parse(saved);
+                for (let i = 1; i <= 10; i++) {
+                    if (respostas[`resp${i}`]) {
+                        document.getElementById(`resp${i}`).value = respostas[`resp${i}`];
+                    }
+                }
+            }
+            updateProgress();
+        }
+
+        function clearAnswers() {
+            if (confirm('Tem certeza que deseja limpar todas as respostas?')) {
+                for (let i = 1; i <= 10; i++) {
+                    document.getElementById(`resp${i}`).value = '';
+                }
+                localStorage.removeItem(STORAGE_KEY);
+                updateProgress();
+            }
+        }
+
+        function toggleGabarito(id) {
+            const gab = document.getElementById(id);
+            gab.classList.toggle('show');
+        }
+
+        function toggleAllGabaritos() {
+            const gabaritos = document.querySelectorAll('.gabarito');
+            const allVisible = Array.from(gabaritos).every(g => g.classList.contains('show'));
+            gabaritos.forEach(g => {
+                if (allVisible) {
+                    g.classList.remove('show');
+                } else {
+                    g.classList.add('show');
+                }
+            });
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            for (let i = 1; i <= 10; i++) {
+                if (document.getElementById(`resp${i}`).value.trim() !== '') {
+                    answered++;
+                }
+            }
+            document.getElementById('progress').textContent = answered;
+            document.getElementById('progressBar').style.width = (answered / 10 * 100) + '%';
+        }
+
+        window.onload = loadAnswers;
+    </script>
+</body>
+</html>
+
